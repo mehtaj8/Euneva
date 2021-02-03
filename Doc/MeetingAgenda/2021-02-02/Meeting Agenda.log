@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.24)  2 FEB 2021 23:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.24)  3 FEB 2021 01:30
 entering extended mode
-**"./Problem Statement.tex"
-("Problem Statement.tex"
+**"./Meeting Agenda.tex"
+("Meeting Agenda.tex"
 LaTeX2e <2019-10-01> patch level 3
 ("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
@@ -102,21 +102,34 @@ s
 \f@nch@O@erf=\skip49
 \f@nch@O@olf=\skip50
 \f@nch@O@orf=\skip51
-) ("Problem Statement.aux")
-\openout1 = `"Problem Statement.aux"'.
+) ("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cite\cite.sty"
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+) ("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen113
+\ar@mcellbox=\box27
+\extrarowheight=\dimen114
+\NC@list=\toks17
+\extratabsurround=\skip52
+\backup@length=\skip53
+\ar@cellbox=\box28
+) ("Meeting Agenda.aux")
+\openout1 = `"Meeting Agenda.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -157,16 +170,16 @@ LaTeX Font Info:    ... okay on input line 28.
 df.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
-\scratchdimen=\dimen113
-\scratchbox=\box27
+\scratchdimen=\dimen115
+\scratchbox=\box29
 \nofMPsegments=\count92
 \nofMParguments=\count93
-\everyMPshowfont=\toks17
+\everyMPshowfont=\toks18
 \MPscratchCnt=\count94
-\MPscratchDim=\dimen114
+\MPscratchDim=\dimen116
 \MPnumerator=\count95
 \makeMPintoPDFobject=\count96
-\everyMPtoPDFconversion=\toks18
+\everyMPtoPDFconversion=\toks19
 )
 ("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epsto
 pdf-base.sty"
@@ -219,26 +232,28 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 460.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
 
 ("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 ("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
-
+Overfull \hbox (1.78583pt too wide) in paragraph at lines 37--50
+ [] 
  []
 
-
-Overfull \hbox (12.04324pt too wide) in paragraph at lines 40--41
-\OT1/cmr/m/n/10.95 2018. https://www.acha.org/documents/ncha/NCHA-II[]Fall[]201
-8[]Undergraduate[]Reference
- []
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 5
+4.
+("C:\Users\mjash\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -249,22 +264,28 @@ This may cause the page layout to be inconsistent, however.
 [1{C:/Users/mjash/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-("Problem Statement.aux") ) 
+Overfull \hbox (20.74542pt too wide) in paragraph at lines 67--90
+ [] 
+ []
+
+[2] [3] ("Meeting Agenda.aux") ) 
 Here is how much of TeX's memory you used:
- 2617 strings out of 492484
- 36946 string characters out of 3121601
- 102679 words of memory out of 3000000
- 6944 multiletter control sequences out of 15000+200000
- 9498 words of font info for 36 fonts, out of 3000000 for 9000
+ 2777 strings out of 492484
+ 39124 string characters out of 3121601
+ 106424 words of memory out of 3000000
+ 7094 multiletter control sequences out of 15000+200000
+ 9806 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,10n,45p,543b,186s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/mjash/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/mjash/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mjash/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-Output written on "Problem Statement.pdf" (1 page, 46918 bytes).
+ 51i,10n,45p,308b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/mjash/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/mjash/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/mjash/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
+/mjash/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb>
+Output written on "Meeting Agenda.pdf" (3 pages, 62887 bytes).
 PDF statistics:
- 18 PDF objects out of 1000 (max. 8388607)
+ 28 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
