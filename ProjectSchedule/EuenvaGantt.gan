@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="ProjectSchedule" company="Grp9Lab02" webLink="http://" view-date="2021-01-10" view-index="0" gantt-divider-location="660" resource-divider-location="300" version="3.0.3000" locale="en_CA">
+<?xml version="1.0" encoding="UTF-8"?><project name="ProjectSchedule" company="Grp9Lab02" webLink="https://gitlab.cas.mcmaster.ca/renx11/3xa3-project-l02-group9" view-date="2021-01-10" view-index="0" gantt-divider-location="660" resource-divider-location="300" version="3.0.3000" locale="en_CA">
     <description/>
     <view zooming-state="default:4" id="gantt-chart">
-        <field id="tpd3" name="Name" width="284" order="0"/>
-        <field id="tpd4" name="Begin date" width="186" order="1"/>
-        <field id="tpd5" name="End date" width="186" order="2"/>
+        <field id="tpd3" name="Name" width="277" order="0"/>
+        <field id="tpd4" name="Begin date" width="182" order="1"/>
+        <field id="tpd5" name="End date" width="182" order="2"/>
         <option id="color.recent">
             <![CDATA[#000000]]>
         </option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Name" width="206" order="0"/>
-        <field id="1" name="Default role" width="90" order="1"/>
+        <field id="0" name="Name" width="199" order="0"/>
+        <field id="1" name="Default role" width="82" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -38,13 +38,13 @@
         </taskproperties>
         <task id="45" name="Team Formation" color="#8cb6ce" meeting="true" start="2021-01-18" duration="0" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
         <task id="46" name="Project Approval" color="#8cb6ce" meeting="true" start="2021-01-25" duration="0" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
-        <task id="0" name="Writing Problem Statement" meeting="false" start="2021-01-25" duration="4" complete="0" expand="false">
+        <task id="0" name="Writing Problem Statement" meeting="false" start="2021-01-25" duration="4" complete="0" expand="true">
             <task id="1" name="Document Problem" color="#8cb6ce" meeting="false" start="2021-01-25" duration="4" complete="0" thirdDate="2021-02-04" thirdDate-constraint="0" expand="true"/>
             <task id="2" name="Document Problem Importance" color="#8cb6ce" meeting="false" start="2021-01-25" duration="4" complete="0" thirdDate="2021-02-04" thirdDate-constraint="0" expand="true"/>
             <task id="3" name="Document Problem Context" color="#8cb6ce" meeting="false" start="2021-01-25" duration="4" complete="0" thirdDate="2021-02-04" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="8" name="Problem Statement Due" color="#8cb6ce" meeting="true" start="2021-01-29" duration="0" complete="0" thirdDate="2021-01-16" thirdDate-constraint="0" expand="true"/>
-        <task id="13" name="Writing Development Plan" meeting="false" start="2021-02-01" duration="4" complete="0" expand="false">
+        <task id="13" name="Writing Development Plan" meeting="false" start="2021-02-01" duration="4" complete="0" expand="true">
             <task id="24" name="Team Meeting Plan" color="#8cb6ce" meeting="false" start="2021-02-01" duration="4" complete="0" thirdDate="2021-01-16" thirdDate-constraint="0" expand="true"/>
             <task id="25" name="Team Communication Plan" color="#8cb6ce" meeting="false" start="2021-02-01" duration="4" complete="0" thirdDate="2021-01-16" thirdDate-constraint="0" expand="true"/>
             <task id="26" name="Team Member Roles" color="#8cb6ce" meeting="false" start="2021-02-01" duration="4" complete="0" thirdDate="2021-02-01" thirdDate-constraint="0" expand="true"/>
@@ -55,13 +55,13 @@
             <task id="31" name="Project Schedule" color="#8cb6ce" meeting="false" start="2021-02-01" duration="4" complete="0" thirdDate="2021-01-31" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="43" name="Development Plan Due" color="#8cb6ce" meeting="true" start="2021-02-05" duration="0" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
-        <task id="47" name="Writing Requirement Document Rev0" color="#000000" meeting="false" start="2021-02-08" duration="4" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="false">
+        <task id="47" name="Writing Requirement Document Rev0" color="#000000" meeting="false" start="2021-02-08" duration="4" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true">
             <task id="61" name="Function Requirements" color="#8cb6ce" meeting="false" start="2021-02-08" duration="4" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
             <task id="63" name="Non-Functional Requirements" color="#8cb6ce" meeting="false" start="2021-02-08" duration="4" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
             <task id="65" name="Miscellaneous" color="#8cb6ce" meeting="false" start="2021-02-08" duration="4" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="66" name="Requirements Document Rev0 Due" color="#8cb6ce" meeting="true" start="2021-02-12" duration="0" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true"/>
-        <task id="84" name="Development" color="#000000" meeting="false" start="2021-02-12" duration="15" complete="0" thirdDate="2021-02-07" thirdDate-constraint="0" expand="false">
+        <task id="84" name="Development" color="#000000" meeting="false" start="2021-02-12" duration="15" complete="0" thirdDate="2021-02-07" thirdDate-constraint="0" expand="true">
             <task id="87" name="Copy Original Code base" color="#8cb6ce" meeting="false" start="2021-02-12" duration="1" complete="0" thirdDate="2021-02-07" thirdDate-constraint="0" expand="true"/>
             <task id="88" name="Manage Dev Admins" color="#8cb6ce" meeting="false" start="2021-02-13" duration="1" complete="0" thirdDate="2021-02-07" thirdDate-constraint="0" expand="true"/>
             <task id="89" name="Set up DevOps Pipeline" color="#8cb6ce" meeting="false" start="2021-02-14" duration="1" complete="0" thirdDate="2021-02-07" thirdDate-constraint="0" expand="true"/>
@@ -74,7 +74,7 @@
             <task id="98" name="Deploy Frontend" color="#8cb6ce" meeting="true" start="2021-02-27" duration="0" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="115" name="Proof of Concept Demo" color="#8cb6ce" meeting="true" start="2021-02-22" duration="0" complete="0" thirdDate="2021-02-08" thirdDate-constraint="0" expand="true"/>
-        <task id="50" name="Test Plan Rev0" color="#000000" meeting="false" start="2021-02-22" duration="11" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="false">
+        <task id="50" name="Test Plan Rev0" color="#000000" meeting="false" start="2021-02-22" duration="11" complete="0" thirdDate="2021-01-11" thirdDate-constraint="0" expand="true">
             <task id="99" name="Unit Test each function - Backend" color="#8cb6ce" meeting="false" start="2021-02-22" duration="2" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
             <task id="100" name="Unit Test each model - Backend" color="#8cb6ce" meeting="false" start="2021-02-23" duration="2" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>
             <task id="103" name="Unit Test each controller - Backend" color="#8cb6ce" meeting="false" start="2021-02-24" duration="2" complete="0" thirdDate="2021-02-06" thirdDate-constraint="0" expand="true"/>

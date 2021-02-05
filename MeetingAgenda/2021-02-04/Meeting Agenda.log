@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.24)  3 FEB 2021 01:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.24)  4 FEB 2021 22:40
 entering extended mode
 **"./Meeting Agenda.tex"
 ("Meeting Agenda.tex"
@@ -263,12 +263,8 @@ This may cause the page layout to be inconsistent, however.
 
 [1{C:/Users/mjash/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-]
-Overfull \hbox (20.74542pt too wide) in paragraph at lines 82--105
- [] 
- []
-
-[2] [3] ("Meeting Agenda.aux") ) 
+] [2]
+[3] ("Meeting Agenda.aux") ) 
 Here is how much of TeX's memory you used:
  2777 strings out of 492484
  39124 string characters out of 3121601
@@ -276,14 +272,14 @@ Here is how much of TeX's memory you used:
  7094 multiletter control sequences out of 15000+200000
  9806 words of font info for 37 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 51i,10n,45p,308b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/mjash/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/mjash/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/mjash/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
-/mjash/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on "Meeting Agenda.pdf" (3 pages, 63574 bytes).
+ 51i,10n,45p,308b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/mjash/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/mjash/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/mjash/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mja
+sh/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+
+Output written on "Meeting Agenda.pdf" (3 pages, 59970 bytes).
 PDF statistics:
  28 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
