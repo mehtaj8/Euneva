@@ -10,3 +10,4 @@ For developers to contribute follow this
 - then to save your commit, do ```:wq```
 
 - IF YOU DON'T WANT TO FOLLOW THIS, YOU CAN STILL COMMIT REGURARILY VIA ```git commit -m ``` (insert your message after the '-m')
+- Then just use ```cntrl+c``` to exit the commitizen flow and immediately commit your message without all this overhead
