@@ -43,3 +43,5 @@ dist/
 .fls
 .aux
 .fdb_latexmk
+.out
+.synctex.gz
