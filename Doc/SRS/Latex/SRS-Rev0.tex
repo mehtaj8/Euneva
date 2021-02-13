@@ -4,6 +4,7 @@
 \graphicspath{ {./images/} }
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{float}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
@@ -143,13 +144,15 @@ The software product being developed in this document is a To-Do list linked to 
 
 \subsubsection{The Context of the Work}
 
-\begin{center}
+\begin{figure}[H]
 \includegraphics[scale=0.2]{Context_Of_Work}
-Figure 1: Context of Work for Euneva
-\end{center}
+\caption{Context of Work for Euneva}
+\end{figure}
 
 \subsubsection{Work Partitioning}
 
+\begin{table}[H]
+\caption{Work Partitioning Part I.}
 \begin{center}
 \begin{tabular}{ |m{4em}|m{8em}|m{10em}|m{10em}| } 
  \hline
@@ -162,9 +165,12 @@ Figure 1: Context of Work for Euneva
  3 & Gather Course Names & Avenue to Learn Website & Course Names available to use with corresponding dates and deadlines.\\
  \hline 
 \end{tabular}
-Table 2: Work Partitioning Part I.
 \end{center}
+\label{wp1}
+\end{table}
 
+\begin{table}[H]
+\caption {Work Partitioning Part II.}
 \begin{center}
 \begin{tabular}{ |m{4em}|m{28em}| } 
  \hline
@@ -177,11 +183,14 @@ Table 2: Work Partitioning Part I.
  3 & The Course names are required for each date and deadline gathered for the same student. This allows for dates to be attached to a name. \\
  \hline 
 \end{tabular}
-Table 3: Work Partitioning Part II.
 \end{center}
+\label{wp2}
+\end{table}
 
 \subsubsection{Individual Product Use Cases}
 
+\begin{table}[H]
+\caption{Use Cases.}
 \begin{center}
 \begin{tabular}{ |m{4em}|m{18em}|m{8em}|} 
  \hline
@@ -200,9 +209,12 @@ Table 3: Work Partitioning Part II.
  Student & User changes state of added To-Do item. & Edit (UC3) \\
  \hline 
 \end{tabular}
-Table 4: Use Cases.
 \end{center}
+\label{uc}
+\end{table}
 
+\begin{table}[H]
+\caption{Use Cases Description.}
 \begin{center}
 \begin{tabular}{ |m{4em}|m{26em}| } 
  \hline
@@ -217,8 +229,9 @@ Table 4: Use Cases.
  Delete (UC4) & The user intends to delete the selected To-Do item from the list.\\
  \hline
 \end{tabular}
-Table 5: Use Cases Description.
 \end{center}
+\label{ucd}
+\end{table}
 
 \subsection{Functional Requirements}
 
