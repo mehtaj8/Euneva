@@ -53,8 +53,14 @@ shadow_root3 = expand_shadow_element(root3)
 root4 = shadow_root3.find_element_by_css_selector('d2l-my-courses-card-grid')
 shadow_root4 = expand_shadow_element(root4)
 
-root5 = shadow_root4.find_element_by_css_selector('d2l-enrollment-card')
-shadow_root5 = expand_shadow_element(root5)
+root5 = shadow_root4.find_elements_by_css_selector('d2l-enrollment-card')
+for i in root5:
+  shadow_root5 = expand_shadow_element(i)
+  class1 = shadow_root5.find_element_by_css_selector('d2l-card')
+  print(class1.get_attribute('href'))
 
-class1 = shadow_root5.find_element_by_css_selector('d2l-card')
-print(class1.get_attribute('href'))
+uniqueClassURL = class1.get_attribute('href')
+uniqueClassID = uniqueClassURL[10:16]
+print(uniqueClassID)
+assignmentURL = 'https://avenue.cllmcmaster.ca/d2l/lms/dropbox/user/folders_list.d2l?ou='+uniqueClassID+'&isprv=0'
+driver.get(assignmentURL)
