@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "commitizen": "^4.2.3"
+    "commitizen": "^4.2.3",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.2.0"
