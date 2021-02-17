@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "format": "prettier --write 'src/*.ts' 'src/**/*.ts'",
+        "format-py": "black python_files",
+        "format-ts": "prettier --write 'src/*.ts' 'src/**/*.ts'",
         "tsc": "tsc",
         "watch-tsc": "tsc -w",
         "deploy": "node dist/index.js",
