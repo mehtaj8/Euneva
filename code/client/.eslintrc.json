@@ -6,7 +6,7 @@
     "ecmaFeatures": {
       "jsx": true // Allows for the parsing of JSX
     },
-    "project": "code/client/tsconfig.json"
+    "project": "tsconfig.json"
   },
   "settings": {
     "react": {
