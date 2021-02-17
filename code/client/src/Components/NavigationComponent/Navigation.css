@@ -1,0 +1,32 @@
+.root-navigation-container {
+  min-width: 200px;
+  max-width: 300px;
+  background-color: --var();
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+
+  flex-grow: 1;
+}
+
+.todolist-title-collection-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.todolist-title-collection-label {
+}
+
+.todolist-title-collection {
+}
+
+.add-todolist-button-container {
+}
+
+@media (max-width: 850px), (max-height: 700px) {
+  .root-navbar-container {
+    display: none;
+  }
+}

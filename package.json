@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "format-py": "black src"
+  },
   "dependencies": {
     "commitizen": "^4.2.3",
     "dotenv": "^8.2.0"
