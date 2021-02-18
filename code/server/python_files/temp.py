@@ -29,6 +29,7 @@ today = date.today()
 date1 = today.strftime("%b %d, %Y")
 d1 = datetime.strptime(date1, "%b %d, %Y")
 
+
 def login():
     print(driver.current_url)
     time.sleep(5)
@@ -82,6 +83,7 @@ def getClasses(shadow_root, panelID):
 
     return classes, classNames
 
+
 def getAssignmentSubmissions():
     tableRoot1 = driver.find_element_by_tag_name("table")
     tableRoot2 = tableRoot1.find_elements_by_xpath("//td[@class='d_gn d_gc d_gt']")
@@ -124,13 +126,14 @@ def getAssignmentDates():
         try:
             date = dateRoot1[i].find_element_by_css_selector("label")
             date1 = date.text
-            d2 = datetime.strptime(date1, '%b %d, %Y %I:%M %p')
-            if(submissions[i] == "Not Submitted") and (d2 >= d1):
+            d2 = datetime.strptime(date1, "%b %d, %Y %I:%M %p")
+            if (submissions[i] == "Not Submitted") and (d2 >= d1):
                 dates.append(date1)
         except NoSuchElementException:
-            if(submissions[i] == "Not Submitted"):
+            if submissions[i] == "Not Submitted":
                 dates.append(0)
     return dates
+
 
 def getQuizSubmissions():
     tableRoot1 = driver.find_element_by_tag_name("table")
@@ -141,6 +144,7 @@ def getQuizSubmissions():
         submissions.append(submission)
     return submissions
 
+
 def getQuizNames():
     tableRoot1 = driver.find_element_by_tag_name("table")
     tableRoot2 = tableRoot1.find_elements_by_xpath("//a[@title='Quiz summary']")
@@ -149,7 +153,7 @@ def getQuizNames():
     for i in range(0, len(tableRoot2)):
         if dates:
             d2 = datetime.strptime(dates[i], "%b %d, %Y")
-            if(d2 >= d1):
+            if d2 >= d1:
                 quizName = tableRoot2[i].text
                 quizNames.append(quizName)
     return quizNames
@@ -157,20 +161,22 @@ def getQuizNames():
 
 def getQuizDates():
     tableRoot1 = driver.find_element_by_tag_name("table")
-    tableRoot2 = tableRoot1.find_elements_by_xpath("//div[@class='drt d2l-htmlblock d2l-htmlblock-untrusted d2l-htmlblock-deferred']")
+    tableRoot2 = tableRoot1.find_elements_by_xpath(
+        "//div[@class='drt d2l-htmlblock d2l-htmlblock-untrusted d2l-htmlblock-deferred']"
+    )
     quizDates = []
     submissions = getQuizSubmissions()
     for i in range(0, len(tableRoot2)):
         quizDate = tableRoot2[i].text
         quizDate1 = " "
         d2 = datetime.today()
-        if(quizDate.split(" ")[0] == "Available"):
+        if quizDate.split(" ")[0] == "Available":
             quizDate1 = quizDate[13:25].strip()
             d2 = datetime.strptime(quizDate1, "%b %d, %Y")
-        if(quizDate.split(" ")[0] == "Due"):
+        if quizDate.split(" ")[0] == "Due":
             quizDate1 = quizDate[7:19].strip()
             d2 = datetime.strptime(quizDate1, "%b %d, %Y")
-        if(d2 >= d1) and submissions[i] != "Feedback: On Attempt":
+        if (d2 >= d1) and submissions[i] != "Feedback: On Attempt":
             quizDates.append(quizDate1)
     return quizDates
 
@@ -204,8 +210,8 @@ def main():
 
         assignmentNames = getAssignmentNames()
         assignmentDates = getAssignmentDates()
-        #print(assignmentNames)
-        #print(assignmentDates)
+        # print(assignmentNames)
+        # print(assignmentDates)
 
     for i in classes:
         uniqueClassID = i[10:16]
@@ -220,6 +226,7 @@ def main():
         quizDates = getQuizDates()
         print(quizNames)
         print(quizDates)
+
 
 if __name__ == "__main__":
     main()
