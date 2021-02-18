@@ -37,7 +37,7 @@ def login():
     username.send_keys(os.getenv("macid"))
     password.send_keys(os.getenv("pass"))
     submit.click()
-    time.sleep(1)
+    time.sleep(5)
 
 
 def expand_shadow_element(element):
@@ -53,7 +53,7 @@ def filterCourses(shadow_root):
     filters = []
     for i in filterRoot2:
         filters.append(i)
-    filter1 = filters[2]
+    filter1 = filters[3]
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
     return panelID
@@ -108,6 +108,26 @@ def getAssignmentDates():
     return dates
 
 
+def getQuizNames():
+    tableRoot1 = driver.find_element_by_tag_name("table")
+    tableRoot2 = tableRoot1.find_elements_by_xpath("//a[@title='Quiz summary']")
+    quizNames = []
+    for i in tableRoot2:
+        quizName = i.text
+        quizNames.append(quizName)
+    return quizNames
+
+
+def getQuizDates():
+    tableRoot1 = driver.find_element_by_tag_name("table")
+    tableRoot2 = tableRoot1.find_elements_by_css_selector("span")
+    quizDates = []
+    for i in tableRoot2:
+        quizDate = i.text
+        quizDates.append(quizDate)
+    return quizDates
+
+
 def main():
     driver.get(avenueWebsiteURL)
     login()
@@ -138,13 +158,18 @@ def main():
         assignmentNames = getAssignmentNames()
         assignmentDates = getAssignmentDates()
 
-        for i in range(0, len(classes)):
-            print(classes[i])
-            print(classNames[i])
+    for i in classes:
+        uniqueClassID = i[10:16]
+        quizzesURL = (
+            "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
+            + uniqueClassID
+        )
 
-        for i in range(0, len(assignmentNames)):
-            print(assignmentNames[i])
-            print(assignmentDates[i])
+        driver.get(quizzesURL)
+
+        quizNames = getQuizNames()
+        quizDates = getQuizDates()
+
 
 if __name__ == "__main__":
     main()
