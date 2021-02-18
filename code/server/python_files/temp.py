@@ -12,7 +12,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException
-
+from datetime import date
+from datetime import datetime
 
 load_dotenv()
 avenueWebsiteURL = (
@@ -24,7 +25,9 @@ service.start()
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
-
+today = date.today()
+date1 = today.strftime("%b %d, %Y")
+d1 = datetime.strptime(date1, "%b %d, %Y")
 
 def login():
     print(driver.current_url)
@@ -53,7 +56,7 @@ def filterCourses(shadow_root):
     filters = []
     for i in filterRoot2:
         filters.append(i)
-    filter1 = filters[2]
+    filter1 = filters[3]
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
     return panelID
@@ -79,33 +82,97 @@ def getClasses(shadow_root, panelID):
 
     return classes, classNames
 
+def getAssignmentSubmissions():
+    tableRoot1 = driver.find_element_by_tag_name("table")
+    tableRoot2 = tableRoot1.find_elements_by_xpath("//td[@class='d_gn d_gc d_gt']")
+    submissions = []
+    for i in tableRoot2:
+        try:
+            submission = i.find_element_by_css_selector("a")
+        except:
+            submission = i.find_element_by_css_selector("label")
+        submissions.append(submission.text)
+    return submissions
+
 
 def getAssignmentNames():
     tableRoot1 = driver.find_element_by_tag_name("table")
     tableRoot2 = tableRoot1.find_elements_by_css_selector(".dco.d2l-foldername")
     assignmentNames = []
-    for i in tableRoot2:
-        try:
-            assignmentName = i.find_element_by_css_selector("a")
-        except NoSuchElementException:
-            assignmentName = i.find_element_by_css_selector("label")
-        assignmentNames.append(assignmentName.text)
+    dates = getAssignmentDates()
+    submissions = getAssignmentSubmissions()
+    for i in range(0, len(tableRoot2)):
+        if dates:
+            d2 = datetime.strptime(dates[i], "%b %d, %Y")
+            try:
+                assignmentName = tableRoot2[i].find_element_by_css_selector("a")
+            except NoSuchElementException:
+                assignmentName = tableRoot2[i].find_element_by_css_selector("label")
+            if submissions[i] == "Not Submitted" and (d2 >= d1):
+                assignmentNames.append(assignmentName.text)
     return assignmentNames
 
 
-def getDates():
+def getAssignmentDates():
     tableRoot1 = driver.find_element_by_tag_name("table")
     dateRoot1 = tableRoot1.find_elements_by_css_selector(
         "td.d_gn.d_gc.d_gt.d2l-table-cell-last"
     )
+    submissions = getAssignmentSubmissions()
     dates = []
-    for i in dateRoot1:
+    for i in range(0, len(dateRoot1)):
         try:
-            date = i.find_element_by_css_selector("label")
-            dates.append(date.text)
+            date = dateRoot1[i].find_element_by_css_selector("label")
+            date1 = date.text
+            d2 = datetime.strptime(date1, '%b %d, %Y %I:%M %p')
+            if(submissions[i] == "Not Submitted") and (d2 >= d1):
+                dates.append(date1)
         except NoSuchElementException:
-            dates.append(0)
+            if(submissions[i] == "Not Submitted"):
+                dates.append(0)
     return dates
+
+def getQuizSubmissions():
+    tableRoot1 = driver.find_element_by_tag_name("table")
+    tableRoot2 = tableRoot1.find_elements_by_xpath("//td[@class='d_gn']")
+    submissions = []
+    for i in tableRoot2:
+        submission = i.text
+        submissions.append(submission)
+    return submissions
+
+def getQuizNames():
+    tableRoot1 = driver.find_element_by_tag_name("table")
+    tableRoot2 = tableRoot1.find_elements_by_xpath("//a[@title='Quiz summary']")
+    quizNames = []
+    dates = getQuizDates()
+    for i in range(0, len(tableRoot2)):
+        if dates:
+            d2 = datetime.strptime(dates[i], "%b %d, %Y")
+            if(d2 >= d1):
+                quizName = tableRoot2[i].text
+                quizNames.append(quizName)
+    return quizNames
+
+
+def getQuizDates():
+    tableRoot1 = driver.find_element_by_tag_name("table")
+    tableRoot2 = tableRoot1.find_elements_by_xpath("//div[@class='drt d2l-htmlblock d2l-htmlblock-untrusted d2l-htmlblock-deferred']")
+    quizDates = []
+    submissions = getQuizSubmissions()
+    for i in range(0, len(tableRoot2)):
+        quizDate = tableRoot2[i].text
+        quizDate1 = " "
+        d2 = datetime.today()
+        if(quizDate.split(" ")[0] == "Available"):
+            quizDate1 = quizDate[13:25].strip()
+            d2 = datetime.strptime(quizDate1, "%b %d, %Y")
+        if(quizDate.split(" ")[0] == "Due"):
+            quizDate1 = quizDate[7:19].strip()
+            d2 = datetime.strptime(quizDate1, "%b %d, %Y")
+        if(d2 >= d1) and submissions[i] != "Feedback: On Attempt":
+            quizDates.append(quizDate1)
+    return quizDates
 
 
 def main():
@@ -136,16 +203,23 @@ def main():
         driver.get(assignmentURL)
 
         assignmentNames = getAssignmentNames()
-        dates = getDates()
+        assignmentDates = getAssignmentDates()
+        #print(assignmentNames)
+        #print(assignmentDates)
 
-        # for i in range(0, len(classes)):
-        # print(classes[i])
-        # print(classNames[i])
+    for i in classes:
+        uniqueClassID = i[10:16]
+        quizzesURL = (
+            "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
+            + uniqueClassID
+        )
 
-        # for i in range(0, len(assignmentNames)):
-        # print(assignmentNames[i])
-        # print(dates[i])
+        driver.get(quizzesURL)
 
+        quizNames = getQuizNames()
+        quizDates = getQuizDates()
+        print(quizNames)
+        print(quizDates)
 
 if __name__ == "__main__":
     main()
