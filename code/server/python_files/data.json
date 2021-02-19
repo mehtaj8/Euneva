@@ -2,104 +2,248 @@
     "user": { "username": "", "password": "" },
     "assignmentObjectArray": [
         {
-            "class_names": "SFWRENG 3XA3",
-            "class_urls": "/d2l/home/376170",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Submit files to Projects lab section1",
-                    "Submit files to Projects lab section 2",
-                    "Submit files to Projects lab section 3"
-                ],
-                "assignmentCompletionStatuses": [
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Jan 29, 2021 11:59 PM",
-                    "Jan 29, 2021 11:59 PM",
-                    "Jan 29, 2021 11:59 PM"
-                ]
-            }
-        },
-        {
-            "class_names": "HTHSCI 3G03",
-            "class_urls": "/d2l/home/376130",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Submit files to Prognosis/Risk SUBMISSION folder",
-                    "Submit files to Diagnostic Test Validity",
-                    "Submit files to RCT",
-                    "Submit files to Systematic Reviews"
-                ],
-                "assignmentCompletionStatuses": [
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Mar 13, 2021 11:59 PM",
-                    "Mar 27, 2021 11:59 PM",
-                    "Feb 13, 2021 11:59 PM",
-                    "Apr 10, 2021 11:59 PM"
-                ]
-            }
-        },
-        {
-            "class_names": "IBEHS 3P04",
-            "class_urls": "/d2l/home/340984",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Submit files to Assignment 1",
-                    "Submit files to Design Project M1 - Friday Section",
-                    "Submit files to Design Project M2-Friday Section",
-                    "Submit files to Design Project M3-Friday Section",
-                    "Submit files to Project Zero Final Submission - Friday"
-                ],
-                "assignmentCompletionStatuses": [
-                    "Not Submitted",
-                    "1 Submission, 1 File",
-                    "2 Submissions, 4 Files",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Feb 24, 2021 11:59 PM",
-                    "Jan 22, 2021 11:59 PM",
-                    "Feb 5, 2021 11:59 PM",
-                    "Feb 26, 2021 11:59 PM",
-                    "Feb 26, 2021 10:20 AM"
-                ]
-            }
-        },
-        {
             "class_names": "SFWRENG 2GA3",
-            "class_urls": "/d2l/home/338214",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Assignment 1",
-                    "Submit files to Assignment 2"
+            "class_urls": "/d2l/home/326281",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [
+                    "Assignment 3",
+                    "Assignment 4",
+                    "Final Exam Drop Box"
                 ],
-                "assignmentCompletionStatuses": [
-                    "2 Submissions, 3 Files",
-                    "Not Submitted"
+                "itemCompletionStatuses": [
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File"
                 ],
-                "assignmentDueDates": [
-                    "Feb 8, 2021 5:00 PM",
-                    "Mar 1, 2021 11:59 PM"
+                "itemDueDates": [
+                    "Mar 18, 2020 2:00 PM",
+                    "Apr 2, 2020 2:00 PM",
+                    "Apr 20, 2020 3:30 PM"
                 ]
             }
         },
         {
-            "class_names": "CHEM 1AA3",
-            "class_urls": "/d2l/home/335605",
-            "assignmentObject": {
-                "assignmentNames": ["Exp 9 FlowChart - Synthesis of Aspirin"],
-                "assignmentCompletionStatuses": [null],
-                "assignmentDueDates": ["Mar 26, 2021 11:59 PM"]
+            "class_names": "MUSIC 2MT3",
+            "class_urls": "/d2l/home/292245",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        },
+        {
+            "class_names": "SFWRENG 2XB3",
+            "class_urls": "/d2l/home/313036",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [
+                    "Walk-through 1 Submissions",
+                    "Walk-through 2 Submissions",
+                    "Walk-through 3 Submissions",
+                    "Walk-through 4 Submissions",
+                    "Walk-through 5 Submissions",
+                    "Walk-through 6 Submissions",
+                    "Walk-through 7 Submissions",
+                    "Walk-through 8 Submissions",
+                    "Walk-through 9-1 Submissions",
+                    "Walk-through 9-2 Submissions",
+                    "Walk-through 10-1 Submissions",
+                    "Walk-through 10-2 Submissions",
+                    "Assignment 1",
+                    "Assignment 2",
+                    "Final project - Peer Review",
+                    "SFWRENG_2XB3_LAB_L02 - 2: Final Project - L02",
+                    "SFWRENG_2XB3_LAB_L02 - 2: Final Project Proposal Document -L02",
+                    "SFWRENG_2XB3_LAB_L02 - 2: FInal Project proposal presentation -SLIDES- L02",
+                    "In-Lab Quiz 2 - Section 02",
+                    "SFWRENG_2XB3_LAB_L02 - 2: System Requirement Specifications Document - L02"
+                ],
+                "itemCompletionStatuses": [
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "2 Submissions, 2 Files",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File",
+                    "2 Submissions, 2 Files",
+                    "1 Submission, 1 File",
+                    "2 Submissions, 10 Files",
+                    "2 Submissions, 2 Files",
+                    "1 Submission, 1 File",
+                    "2 Submissions, 2 Files",
+                    "4 Submissions, 4 Files"
+                ],
+                "itemDueDates": [
+                    "Jan 10, 2020 11:59 PM",
+                    "Jan 17, 2020 11:59 PM",
+                    "Jan 17, 2020 11:59 PM",
+                    "Jan 24, 2020 11:59 PM",
+                    "Jan 31, 2020 11:59 PM",
+                    "Feb 7, 2020 11:59 PM",
+                    "Feb 14, 2020 11:59 PM",
+                    "Feb 28, 2020 11:59 PM",
+                    "Mar 6, 2020 11:59 PM",
+                    "Mar 13, 2020 11:59 PM",
+                    "Mar 27, 2020 11:59 PM",
+                    "Apr 3, 2020 11:59 PM",
+                    "Feb 14, 2020 11:59 PM",
+                    "Apr 1, 2020 11:59 PM",
+                    "Apr 13, 2020 11:59 PM",
+                    null,
+                    "Feb 7, 2020 11:59 PM",
+                    null,
+                    "Mar 3, 2020 5:30 PM",
+                    "Mar 7, 2020 11:59 PM"
+                ]
+            }
+        },
+        {
+            "class_names": "SFWRENG 2C03",
+            "class_urls": "/d2l/home/310604",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": ["Assignment 4", "Assignment 5"],
+                "itemCompletionStatuses": [
+                    "1 Submission, 1 File",
+                    "1 Submission, 1 File"
+                ],
+                "itemDueDates": ["Mar 23, 2020 4:30 PM", null]
             }
         }
     ],
-    "quizObjectArray": []
+    "quizObjectArray": [
+        {
+            "class_names": "SFWRENG 2GA3",
+            "class_urls": "/d2l/home/326281",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": ["Final Exam"],
+                "itemCompletionStatuses": [" "],
+                "itemDueDates": ["Apr 20, 2020"]
+            }
+        },
+        {
+            "class_names": "MUSIC 2MT3",
+            "class_urls": "/d2l/home/292245",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": [
+                    "Quiz 1",
+                    "Quiz 2",
+                    "Quiz 3",
+                    "Quiz 4",
+                    "Quiz 5",
+                    "Exam",
+                    "NoGradeCourseReview"
+                ],
+                "itemCompletionStatuses": [
+                    "Feedback: On Attempt",
+                    " ",
+                    "Feedback: On Attempt",
+                    "Feedback: On Attempt",
+                    "Feedback: On Attempt",
+                    "Feedback: On Attempt",
+                    " "
+                ],
+                "itemDueDates": [
+                    "Jan 21, 2020",
+                    "Jan 31, 2020",
+                    "Mar 6, 2020",
+                    "Mar 20, 2020",
+                    "Apr 3, 2020",
+                    "Apr 15, 2020",
+                    "Apr 8, 2020"
+                ]
+            }
+        },
+        {
+            "class_names": "SFWRENG 2XB3",
+            "class_urls": "/d2l/home/313036",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": [
+                    "Lab Safety Quiz (True=Yes, False=No)",
+                    "Project Proposal Peer Evaluation- SECTION 1 - GROUP 1",
+                    "Project Proposal Peer Evaluation- SECTION 1 - GROUP 2",
+                    "Project Proposal Peer Evaluation- SECTION 1 - GROUP 3",
+                    "Project Proposal Peer Evaluation- SECTION 1 - GROUP 4",
+                    "Project Proposal Peer Evaluation- SECTION 1 - GROUP 7",
+                    "Project Proposal Peer Evaluation- SECTION 1 - GROUP 8",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 1",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 2",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 3",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 4",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 5",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 6",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 8",
+                    "Project Proposal Peer Evaluation- SECTION 2 - GROUP 10",
+                    "Project Proposal Peer Evaluation- SECTION 4 - GROUP 1",
+                    "Project Proposal Peer Evaluation- SECTION 4 - GROUP 2",
+                    "Project Proposal Peer Evaluation- SECTION 4 - GROUP 6",
+                    "Quiz 3"
+                ],
+                "itemCompletionStatuses": [
+                    "Feedback: On Attempt",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " "
+                ],
+                "itemDueDates": [
+                    null,
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 11, 2020",
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Feb 12, 2020",
+                    "Mar 30, 2020"
+                ]
+            }
+        },
+        {
+            "class_names": "SFWRENG 2C03",
+            "class_urls": "/d2l/home/310604",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": ["Dry-run test for Final Exam"],
+                "itemCompletionStatuses": [" "],
+                "itemDueDates": ["Apr 6, 2020"]
+            }
+        }
+    ]
 }

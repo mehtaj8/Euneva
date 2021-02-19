@@ -12,18 +12,26 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException
-
+from datetime import date
+from datetime import datetime
+import platform
+import json
 
 load_dotenv()
 avenueWebsiteURL = (
     "https://cap.mcmaster.ca/mcauth/login.jsp?app_id=1505&app_name=Avenue"
 )
 
-service = Service("chromedriver.exe")
+service = Service(
+    "chromedriver" if platform.system() == "Darwin" else "chromedriver.exe"
+)
 service.start()
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
+today = date.today()
+date1 = today.strftime("%b %d, %Y")
+d1 = datetime.strptime(date1, "%b %d, %Y")
 
 
 def login():
@@ -32,11 +40,19 @@ def login():
     username = driver.find_element_by_name("user_id")
     password = driver.find_element_by_name("pin")
     submit = driver.find_element_by_name("submit")
+
+    print("Clearing Username and Password...")
     username.clear()
     password.clear()
+
+    print("Entering Username and Password...")
     username.send_keys(os.getenv("macid"))
     password.send_keys(os.getenv("pass"))
+
+    print("Submitting Username and Password...")
     submit.click()
+
+    print("Waiting for login...")
     time.sleep(5)
 
 
@@ -46,94 +62,213 @@ def expand_shadow_element(element):
 
 
 def filterCourses(shadow_root):
+    # Rename filters to semesters and teach jash how to name variabels
+    print("Navigating to Semesters...")
     filterRoot1 = shadow_root.find_element_by_css_selector("d2l-tabs")
     filter_shadow_root1 = expand_shadow_element(filterRoot1)
-
     filterRoot2 = filter_shadow_root1.find_elements_by_css_selector("d2l-tab-internal")
+
+    print("Navigating to current semester...")
     filters = []
     for i in filterRoot2:
         filters.append(i)
-    filter1 = filters[3]
+    filter1 = filters[
+        3
+    ]  # Navigates to current semester (2 -- Current Sem, 3 -- Previous Sem, 0 -- All Courses)
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
+
+    print("Reached current semester...")
     return panelID
 
 
-def getClasses(shadow_root, panelID):
+def getclass_urls(shadow_root, panelID):
+    print("Navigating to classes...")
     tabRoot1 = shadow_root.find_element_by_id(panelID)
-
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
     shadow_root3 = expand_shadow_element(root3)
-
     root4 = shadow_root3.find_element_by_css_selector("d2l-my-courses-card-grid")
     shadow_root4 = expand_shadow_element(root4)
-
     root5 = shadow_root4.find_elements_by_css_selector("d2l-enrollment-card")
-    classes = []
-    classNames = []
+
+    print("Obtaining class information...")
+    class_urls = []
+    class_names = []
     for i in root5:
         shadow_root5 = expand_shadow_element(i)
         class1 = shadow_root5.find_element_by_css_selector("d2l-card")
-        classes.append(class1.get_attribute("href"))
-        classNames.append(class1.text.split(", ")[1])
+        class_urls.append(class1.get_attribute("href"))
+        class_names.append(class1.text.split(":")[0])  # Gets only the course name
 
-    return classes, classNames
+    print("Obtained class information...")
+    return class_urls, class_names
 
 
-def getAssignmentNames():
-    tableRoot1 = driver.find_element_by_tag_name("table")
-    tableRoot2 = tableRoot1.find_elements_by_css_selector(".dco.d2l-foldername")
-    assignmentNames = []
-    for i in tableRoot2:
+def getAssignmentDueDates(due_date_elements):
+    date_array = []
+    for i in range(len(due_date_elements)):
         try:
-            assignmentName = i.find_element_by_css_selector("a")
+            date_label = due_date_elements[i].find_element_by_css_selector("label").text
+            date_array.append(date_label)
+        except:
+            date_array.append(None)
+    return date_array
+
+
+def getAssignmentCompletionStatus(completion_status_elements):
+    completion_status_array = []
+    for i in range(len(completion_status_elements)):
+        try:
+            completion_status = completion_status_elements[i].find_element_by_tag_name(
+                "a"
+            )
+            completion_status_array.append(completion_status.text)
         except NoSuchElementException:
-            assignmentName = i.find_element_by_css_selector("label")
-        assignmentNames.append(assignmentName.text)
-    return assignmentNames
+            try:
+                completion_status = completion_status_elements[
+                    i
+                ].find_element_by_css_selector("label")
+                completion_status_array.append(completion_status.text)
+            except:
+                completion_status_array.append(None)
+    return completion_status_array
 
 
-def getAssignmentDates():
-    tableRoot1 = driver.find_element_by_tag_name("table")
-    dateRoot1 = tableRoot1.find_elements_by_css_selector(
-        "td.d_gn.d_gc.d_gt.d2l-table-cell-last"
+def getAssignmentFolderNames(assignment_folder_elements):
+    assignment_names_array = []
+    for i in range(len(assignment_folder_elements)):
+        try:
+            assignment_name = (
+                assignment_folder_elements[i].find_element_by_tag_name("a").text
+            )
+            assignment_names_array.append(assignment_name)
+        except NoSuchElementException:
+            try:
+                assignment_name = (
+                    assignment_folder_elements[i].find_element_by_tag_name("label").text
+                )
+                assignment_names_array.append(assignment_name)
+            except:
+                assignment_names_array.append(None)
+
+    return assignment_names_array
+
+
+def jsonify(
+    item_names,
+    item_completion_statuses,
+    item_due_dates,
+    class_names,
+    class_urls,
+    item_type,
+):
+    return {
+        "class_names": class_names,
+        "class_urls": class_urls,
+        "itemType": item_type,
+        "itemObject": {
+            "itemNames": item_names,
+            "itemCompletionStatuses": item_completion_statuses,
+            "itemDueDates": item_due_dates,
+        },
+    }
+
+
+def getAssignmentInformation(class_names, class_urls):
+    item_type = "Assignments"
+    assignment_table = driver.find_element_by_tag_name("table")
+
+    completion_status_class = "//td[@class='d_gn d_gc d_gt']"
+    assignment_folder_class = ".dco.d2l-foldername"
+    due_date_class = "td.d_gn.d_gc.d_gt.d2l-table-cell-last"
+
+    assignment_folder_elements = assignment_table.find_elements_by_css_selector(
+        assignment_folder_class
     )
-    dates = []
-    for i in dateRoot1:
-        try:
-            date = i.find_element_by_css_selector("label")
-            dates.append(date.text)
-        except NoSuchElementException:
-            dates.append(0)
-    return dates
+    completion_status_elements = assignment_table.find_elements_by_xpath(
+        completion_status_class
+    )
+    due_date_elements = assignment_table.find_elements_by_css_selector(due_date_class)
+
+    assignment_names = getAssignmentFolderNames(assignment_folder_elements)
+    assignment_completion_status = getAssignmentCompletionStatus(
+        completion_status_elements
+    )
+    assignment_due_dates = getAssignmentDueDates(due_date_elements)
+    assignment_json = jsonify(
+        assignment_names,
+        assignment_completion_status,
+        assignment_due_dates,
+        class_names,
+        class_urls,
+        item_type,
+    )
+
+    return assignment_json
 
 
-def getQuizNames():
-    tableRoot1 = driver.find_element_by_tag_name("table")
-    tableRoot2 = tableRoot1.find_elements_by_xpath("//a[@title='Quiz summary']")
-    quizNames = []
-    for i in tableRoot2:
-        quizName = i.text
-        quizNames.append(quizName)
-    return quizNames
+def getQuizInformation(class_names, class_urls):
+    item_type = "Quizzes"
+    quiz_table = driver.find_element_by_tag_name("table")
+
+    completion_status_class = "//td[@class='d_gn']"
+    quiz_folder_class = "//a[@title='Quiz summary']"
+    due_date_class = "//div[@class='drt d2l-htmlblock d2l-htmlblock-untrusted d2l-htmlblock-deferred']"
+
+    quiz_folder_elements = quiz_table.find_elements_by_xpath(quiz_folder_class)
+    completion_status_elements = quiz_table.find_elements_by_xpath(
+        completion_status_class
+    )
+    due_date_elements = quiz_table.find_elements_by_xpath(due_date_class)
+
+    quiz_names = getQuizFolderNames(quiz_folder_elements)
+    quiz_completion_status = getQuizCompletionStatus(completion_status_elements)
+    quiz_due_dates = getQuizDueDates(due_date_elements)
+    quiz_json = jsonify(
+        quiz_names,
+        quiz_completion_status,
+        quiz_due_dates,
+        class_names,
+        class_urls,
+        item_type,
+    )
+
+    return quiz_json
 
 
-def getQuizDates():
-    tableRoot1 = driver.find_element_by_tag_name("table")
-    tableRoot2 = tableRoot1.find_elements_by_css_selector("span")
-    quizDates = []
-    for i in tableRoot2:
-        quizDate = i.text
-        quizDates.append(quizDate)
-    return quizDates
+def getQuizFolderNames(quiz_folder_elements):
+    quiz_names_array = []
+    for i in range(len(quiz_folder_elements)):
+        quiz_name = quiz_folder_elements[i].text
+        quiz_names_array.append(quiz_name)
+    return quiz_names_array
+
+
+def getQuizDueDates(due_date_class):
+    date_array = []
+    for i in range(0, len(due_date_class)):
+        quiz_date_temp = due_date_class[i].text
+        if quiz_date_temp.split(" ")[0] == "Available":
+            quiz_date = quiz_date_temp[13:25].strip()
+        elif quiz_date_temp.split(" ")[0] == "Due":
+            quiz_date = quiz_date_temp[7:19].strip()
+        else:
+            quiz_date = None
+        date_array.append(quiz_date)
+    return date_array
+
+
+def getQuizCompletionStatus(completion_status_elements):
+    completion_status_array = []
+    for i in range(len(completion_status_elements)):
+        completion_status = completion_status_elements[i].text
+        completion_status_array.append(completion_status)
+    return completion_status_array
 
 
 def main():
     driver.get(avenueWebsiteURL)
     login()
-
-    avenue_homepage_url = driver.current_url
-    avenue_homepage_html = requests.get(avenue_homepage_url).content
     root1 = driver.find_element_by_tag_name("d2l-my-courses")
     shadow_root1 = expand_shadow_element(root1)
 
@@ -143,10 +278,17 @@ def main():
     panelID = filterCourses(shadow_root2)
     time.sleep(5)
 
-    classes, classNames = getClasses(shadow_root2, panelID)
+    class_urls, class_names = getclass_urls(shadow_root2, panelID)
 
-    for i in classes:
-        uniqueClassID = i[10:16]
+    user_data = {
+        "user": {"username": "", "password": ""},
+        "assignmentObjectArray": [],
+        "quizObjectArray": [],
+    }
+
+    #Assignment Information Collection
+    for i in range(len(class_urls)):
+        uniqueClassID = class_urls[i][10:16]
         assignmentURL = (
             "https://avenue.cllmcmaster.ca/d2l/lms/dropbox/user/folders_list.d2l?ou="
             + uniqueClassID
@@ -155,20 +297,31 @@ def main():
 
         driver.get(assignmentURL)
 
-        assignmentNames = getAssignmentNames()
-        assignmentDates = getAssignmentDates()
+        print(f"Obtaining assignment information for {class_names[i]}...")
 
-    for i in classes:
-        uniqueClassID = i[10:16]
-        quizzesURL = (
+        assignment_data = getAssignmentInformation(class_names[i], class_urls[i])
+        user_data["assignmentObjectArray"].append(assignment_data)
+        print(f"Retrieved all assignment information for {class_names[i]}...")
+
+    #Quiz Information Collection
+    for i in range(len(class_urls)):
+        uniqueClassID = class_urls[i][10:16]
+        quizURL = (
             "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
             + uniqueClassID
         )
 
-        driver.get(quizzesURL)
+        driver.get(quizURL)
 
-        quizNames = getQuizNames()
-        quizDates = getQuizDates()
+        print(f"Obtaining quiz information for {class_names[i]}...")
+
+        quiz_data = getQuizInformation(class_names[i], class_urls[i])
+        user_data["quizObjectArray"].append(quiz_data)
+        print(f"Retrieved all quiz information for {class_names[i]}...")
+
+    #Push collected data to .json
+    with open("data.json", "w") as outfile:
+        json.dump(user_data, outfile)
 
 
 if __name__ == "__main__":
