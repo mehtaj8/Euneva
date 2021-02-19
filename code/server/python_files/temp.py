@@ -16,6 +16,7 @@ from datetime import date
 from datetime import datetime
 import platform
 import json
+import sys
 
 load_dotenv()
 avenueWebsiteURL = (
@@ -34,26 +35,26 @@ date1 = today.strftime("%b %d, %Y")
 d1 = datetime.strptime(date1, "%b %d, %Y")
 
 
-def login():
-    print(driver.current_url)
-    time.sleep(5)
+def login(usernameArg, passwordArg):
+    # print(driver.current_url)
+    time.sleep(4)
     username = driver.find_element_by_name("user_id")
     password = driver.find_element_by_name("pin")
     submit = driver.find_element_by_name("submit")
 
-    print("Clearing Username and Password...")
+    # print("Clearing Username and Password...")
     username.clear()
     password.clear()
 
-    print("Entering Username and Password...")
-    username.send_keys(os.getenv("macid"))
-    password.send_keys(os.getenv("pass"))
+    # print("Entering Username and Password...")
+    username.send_keys(usernameArg)
+    password.send_keys(passwordArg)
 
-    print("Submitting Username and Password...")
+    # print("Submitting Username and Password...")
     submit.click()
 
-    print("Waiting for login...")
-    time.sleep(5)
+    # print("Waiting for login...")
+    time.sleep(4)
 
 
 def expand_shadow_element(element):
@@ -63,12 +64,12 @@ def expand_shadow_element(element):
 
 def filterCourses(shadow_root):
     # Rename filters to semesters and teach jash how to name variabels
-    print("Navigating to Semesters...")
+    # print("Navigating to Semesters...")
     filterRoot1 = shadow_root.find_element_by_css_selector("d2l-tabs")
     filter_shadow_root1 = expand_shadow_element(filterRoot1)
     filterRoot2 = filter_shadow_root1.find_elements_by_css_selector("d2l-tab-internal")
 
-    print("Navigating to current semester...")
+    # print("Navigating to current semester...")
     filters = []
     for i in filterRoot2:
         filters.append(i)
@@ -76,14 +77,14 @@ def filterCourses(shadow_root):
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
 
-    print("Reached current semester...")
+    # print("Reached current semester...")
     return panelID
 
 
 def getClasses(shadow_root, panelID):
     # Change classes --> class_urls
     # Change classNames --> class_names
-    print("Navigating to classes...")
+    # print("Navigating to classes...")
     tabRoot1 = shadow_root.find_element_by_id(panelID)
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
     shadow_root3 = expand_shadow_element(root3)
@@ -91,7 +92,7 @@ def getClasses(shadow_root, panelID):
     shadow_root4 = expand_shadow_element(root4)
     root5 = shadow_root4.find_elements_by_css_selector("d2l-enrollment-card")
 
-    print("Obtaining class information...")
+    # print("Obtaining class information...")
     classes = []
     classNames = []
     for i in root5:
@@ -100,7 +101,7 @@ def getClasses(shadow_root, panelID):
         classes.append(class1.get_attribute("href"))
         classNames.append(class1.text.split(":")[0])  # Gets only the course name
 
-    print("Obtained class information...")
+    # print("Obtained class information...")
     return classes, classNames
 
 
@@ -246,21 +247,23 @@ def getAssignmentInformation(class_names, class_urls):
 
 
 def main():
+    username = sys.argv[1]
+    password = sys.argv[2]
+
     driver.get(avenueWebsiteURL)
-    login()
+    login(username, password)
+
     root1 = driver.find_element_by_tag_name("d2l-my-courses")
     shadow_root1 = expand_shadow_element(root1)
-
     root2 = shadow_root1.find_element_by_tag_name("d2l-my-courses-container")
     shadow_root2 = expand_shadow_element(root2)
-
     panelID = filterCourses(shadow_root2)
-    time.sleep(5)
+    time.sleep(4)
 
     class_urls, class_names = getClasses(shadow_root2, panelID)
 
     user_data = {
-        "user": {"username": "", "password": ""},
+        "user": {"username": username, "password": password},
         "assignmentObjectArray": [],
         "quizObjectArray": [],
     }
@@ -275,28 +278,29 @@ def main():
 
         driver.get(assignmentURL)
 
-        print(f"Obtaining assignment information for {class_names[i]}...")
+        # print(f"Obtaining assignment information for {class_names[i]}...")
 
         assignment_data = getAssignmentInformation(class_names[i], class_urls[i])
         user_data["assignmentObjectArray"].append(assignment_data)
-        print(f"Retrieved all assignment information for {class_names[i]}...")
+        # print(f"Retrieved all assignment information for {class_names[i]}...")
 
-    # for i in range(len(class_urls)):
-    #     uniqueClassID = class_urls[i][10:16]
-    #     quizzesURL = (
-    #         "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
-    #         + uniqueClassID
-    #     )
+        # for i in range(len(class_urls)):
+        #     uniqueClassID = class_urls[i][10:16]
+        #     quizzesURL = (
+        #         "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
+        #         + uniqueClassID
+        #     )
 
-    #     driver.get(quizzesURL)
+        #     driver.get(quizzesURL)
 
-    #     print(f"Obtaining quiz information for {class_names[i]}...")
-    #     quizNames = getQuizNames()
-    #     quizDates = getQuizDates()
-    #     print(f"Quiz Names for {class_names[i]}: {quizNames}")
-    #     print(f"Quiz Dates for {class_names[i]}: {quizDates}")
-    #     print(f"Obtained quiz information for {class_names[i]}...")
+        # print(f"Obtaining quiz information for {class_names[i]}...")
+        #     quizNames = getQuizNames()
+        #     quizDates = getQuizDates()
+        # print(f"Quiz Names for {class_names[i]}: {quizNames}")
+        # print(f"Quiz Dates for {class_names[i]}: {quizDates}")
+        # print(f"Obtained quiz information for {class_names[i]}...")
 
+    print(json.dumps(user_data))
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
 
