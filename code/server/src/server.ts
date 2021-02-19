@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { itemsRouter } from './resources/item/item.router';
 import { listRouter } from './resources/list/list.router';
+import { userRouter } from './resources/user/user.router';
+
 import connection from './utils/database';
 
 require('dotenv').config();
@@ -12,6 +14,7 @@ app.use(express.json());
 
 app.use('/items', itemsRouter);
 app.use('/list', listRouter);
+app.use('/user', userRouter);
 
 const startServer = async () => {
     console.log('Starting Server Process...');
