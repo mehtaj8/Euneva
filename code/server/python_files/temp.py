@@ -82,7 +82,7 @@ def filterCourses(shadow_root):
     return panelID
 
 
-def getclass_urls(shadow_root, panelID):
+def getClasses(shadow_root, panelID):
     print("Navigating to class_urls...")
     tabRoot1 = shadow_root.find_element_by_id(panelID)
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
@@ -278,7 +278,7 @@ def main():
     panelID = filterCourses(shadow_root2)
     time.sleep(5)
 
-    class_urls, class_names = getclass_urls(shadow_root2, panelID)
+    class_urls, class_names = getClasses(shadow_root2, panelID)
 
     user_data = {
         "user": {"username": "", "password": ""},
