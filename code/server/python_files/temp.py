@@ -262,8 +262,15 @@ def getQuizCompletionStatus(completion_status_elements):
     completion_status_array = []
     for i in range(len(completion_status_elements)):
         completion_status = completion_status_elements[i].text
+        if(completion_status == " "):
+            completion_status = None
         completion_status_array.append(completion_status)
     return completion_status_array
+
+def filterAssignmentInformation(assignment_data):
+    assignment_names = assignment_data.get("itemObject").get("itemNames")
+    print(assignment_names)
+    return assignment_data
 
 
 def main():
@@ -299,6 +306,7 @@ def main():
         print(f"Obtaining assignment information for {class_names[i]}...")
 
         assignment_data = getAssignmentInformation(class_names[i], class_urls[i])
+        assignment_data = filterAssignmentInformation(assignment_data)
         user_data["assignmentObjectArray"].append(assignment_data)
         print(f"Retrieved all assignment information for {class_names[i]}...")
 

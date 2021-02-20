@@ -262,6 +262,8 @@ def getQuizCompletionStatus(completion_status_elements):
     completion_status_array = []
     for i in range(len(completion_status_elements)):
         completion_status = completion_status_elements[i].text
+        if(completion_status == " "):
+            completion_status = None
         completion_status_array.append(completion_status)
     return completion_status_array
 

@@ -127,7 +127,7 @@
             "itemType": "Quizzes",
             "itemObject": {
                 "itemNames": ["Final Exam"],
-                "itemCompletionStatuses": [" "],
+                "itemCompletionStatuses": [null],
                 "itemDueDates": ["Apr 20, 2020"]
             }
         },
@@ -147,12 +147,12 @@
                 ],
                 "itemCompletionStatuses": [
                     "Feedback: On Attempt",
-                    " ",
+                    null,
                     "Feedback: On Attempt",
                     "Feedback: On Attempt",
                     "Feedback: On Attempt",
                     "Feedback: On Attempt",
-                    " "
+                    null
                 ],
                 "itemDueDates": [
                     "Jan 21, 2020",
@@ -193,24 +193,24 @@
                 ],
                 "itemCompletionStatuses": [
                     "Feedback: On Attempt",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " ",
-                    " "
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 ],
                 "itemDueDates": [
                     null,
@@ -241,7 +241,7 @@
             "itemType": "Quizzes",
             "itemObject": {
                 "itemNames": ["Dry-run test for Final Exam"],
-                "itemCompletionStatuses": [" "],
+                "itemCompletionStatuses": [null],
                 "itemDueDates": ["Apr 6, 2020"]
             }
         }
