@@ -31,7 +31,7 @@ chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 today = date.today()
 date1 = today.strftime("%b %d, %Y")
-d1 = datetime.strptime(date1, "%b %d, %Y")
+converted_today = datetime.strptime(date1, "%b %d, %Y")
 
 
 def login():
@@ -73,7 +73,7 @@ def filterCourses(shadow_root):
     for i in filterRoot2:
         filters.append(i)
     filter1 = filters[
-        3
+        2
     ]  # Navigates to current semester (2 -- Current Sem, 3 -- Previous Sem, 0 -- All Courses)
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
@@ -83,7 +83,7 @@ def filterCourses(shadow_root):
 
 
 def getClasses(shadow_root, panelID):
-    print("Navigating to classes...")
+    print("Navigating to class_urls...")
     tabRoot1 = shadow_root.find_element_by_id(panelID)
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
     shadow_root3 = expand_shadow_element(root3)
@@ -152,26 +152,6 @@ def getAssignmentFolderNames(assignment_folder_elements):
                 assignment_names_array.append(None)
 
     return assignment_names_array
-
-
-def jsonify(
-    item_names,
-    item_completion_statuses,
-    item_due_dates,
-    class_names,
-    class_urls,
-    item_type,
-):
-    return {
-        "class_names": class_names,
-        "class_urls": class_urls,
-        "itemType": item_type,
-        "itemObject": {
-            "itemNames": item_names,
-            "itemCompletionStatuses": item_completion_statuses,
-            "itemDueDates": item_due_dates,
-        },
-    }
 
 
 def getAssignmentInformation(class_names, class_urls):
@@ -262,10 +242,107 @@ def getQuizCompletionStatus(completion_status_elements):
     completion_status_array = []
     for i in range(len(completion_status_elements)):
         completion_status = completion_status_elements[i].text
-        if(completion_status == " "):
+        if completion_status == " ":
             completion_status = None
         completion_status_array.append(completion_status)
     return completion_status_array
+
+
+def filterAssignmentInformation(assignment_data):
+    assignment_names = assignment_data["itemObject"].get("itemNames")
+    assignment_completion_statuses = assignment_data["itemObject"].get(
+        "itemCompletionStatuses"
+    )
+    assignment_dates = assignment_data["itemObject"].get("itemDueDates")
+    assignment_names_filtered = []
+    assignment_completion_statuses_filtered = []
+    assignment_dates_filtered = []
+
+    for i in range(len(assignment_names)):
+        date = assignment_dates[i]
+        if date != None:
+            converted_date = datetime.strptime(date, "%b %d, %Y %I:%M %p")
+            if (converted_date >= converted_today) and (
+                assignment_completion_statuses[i] == "Not Submitted"
+            ):
+                assignment_dates_filtered.append(date[0:12])
+                assignment_names_filtered.append(assignment_names[i])
+                assignment_completion_statuses_filtered.append(
+                    assignment_completion_statuses[i]
+                )
+        else:
+            if assignment_completion_statuses[i] == "Not Submitted":
+                assignment_dates_filtered.append(date)
+                assignment_names_filtered.append(assignment_names[i])
+                assignment_completion_statuses_filtered.append(
+                    assignment_completion_statuses[i]
+                )
+
+    assignment_data_filtered = jsonify(
+        assignment_names_filtered,
+        assignment_completion_statuses_filtered,
+        assignment_dates_filtered,
+        assignment_data["class_names"],
+        assignment_data["class_urls"],
+        assignment_data["itemType"],
+    )
+    return assignment_data_filtered
+
+
+def filterQuizInformation(quiz_data):
+    quiz_names = quiz_data["itemObject"].get("itemNames")
+    quiz_completion_statuses = quiz_data["itemObject"].get("itemCompletionStatuses")
+    quiz_dates = quiz_data["itemObject"].get("itemDueDates")
+    quiz_names_filtered = []
+    quiz_completion_statuses_filtered = []
+    quiz_dates_filtered = []
+
+    for i in range(len(quiz_names)):
+        date = quiz_dates[i]
+        if date != None:
+            converted_date = datetime.strptime(date, "%b %d, %Y")
+            if (converted_date >= converted_today) and (
+                quiz_completion_statuses == None
+            ):
+                quiz_dates_filtered.append(date)
+                quiz_names_filtered.append(quiz_names[i])
+                quiz_completion_statuses_filtered.append(quiz_completion_statuses[i])
+        else:
+            if quiz_completion_statuses == None:
+                quiz_dates_filtered.append(date)
+                quiz_names_filtered.append(quiz_names[i])
+                quiz_completion_statuses_filtered.append(quiz_completion_statuses[i])
+
+    quiz_data_filtered = jsonify(
+        quiz_names_filtered,
+        quiz_completion_statuses_filtered,
+        quiz_dates_filtered,
+        quiz_data["class_names"],
+        quiz_data["class_urls"],
+        quiz_data["itemType"],
+    )
+
+    return quiz_data_filtered
+
+
+def jsonify(
+    item_names,
+    item_completion_statuses,
+    item_due_dates,
+    class_names,
+    class_urls,
+    item_type,
+):
+    return {
+        "class_names": class_names,
+        "class_urls": class_urls,
+        "itemType": item_type,
+        "itemObject": {
+            "itemNames": item_names,
+            "itemCompletionStatuses": item_completion_statuses,
+            "itemDueDates": item_due_dates,
+        },
+    }
 
 
 def main():
@@ -288,7 +365,6 @@ def main():
         "quizObjectArray": [],
     }
 
-    #Assignment Information Collection
     for i in range(len(class_urls)):
         uniqueClassID = class_urls[i][10:16]
         assignmentURL = (
@@ -302,10 +378,10 @@ def main():
         print(f"Obtaining assignment information for {class_names[i]}...")
 
         assignment_data = getAssignmentInformation(class_names[i], class_urls[i])
+        assignment_data = filterAssignmentInformation(assignment_data)
         user_data["assignmentObjectArray"].append(assignment_data)
         print(f"Retrieved all assignment information for {class_names[i]}...")
 
-    #Quiz Information Collection
     for i in range(len(class_urls)):
         uniqueClassID = class_urls[i][10:16]
         quizURL = (
@@ -318,10 +394,10 @@ def main():
         print(f"Obtaining quiz information for {class_names[i]}...")
 
         quiz_data = getQuizInformation(class_names[i], class_urls[i])
+        quiz_data = filterQuizInformation(quiz_data)
         user_data["quizObjectArray"].append(quiz_data)
         print(f"Retrieved all quiz information for {class_names[i]}...")
 
-    #Push collected data to .json
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
 

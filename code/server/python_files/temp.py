@@ -31,7 +31,7 @@ chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 today = date.today()
 date1 = today.strftime("%b %d, %Y")
-d1 = datetime.strptime(date1, "%b %d, %Y")
+converted_today = datetime.strptime(date1, "%b %d, %Y")
 
 
 def login():
@@ -73,7 +73,7 @@ def filterCourses(shadow_root):
     for i in filterRoot2:
         filters.append(i)
     filter1 = filters[
-        3
+        2
     ]  # Navigates to current semester (2 -- Current Sem, 3 -- Previous Sem, 0 -- All Courses)
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
@@ -152,26 +152,6 @@ def getAssignmentFolderNames(assignment_folder_elements):
                 assignment_names_array.append(None)
 
     return assignment_names_array
-
-
-def jsonify(
-    item_names,
-    item_completion_statuses,
-    item_due_dates,
-    class_names,
-    class_urls,
-    item_type,
-):
-    return {
-        "class_names": class_names,
-        "class_urls": class_urls,
-        "itemType": item_type,
-        "itemObject": {
-            "itemNames": item_names,
-            "itemCompletionStatuses": item_completion_statuses,
-            "itemDueDates": item_due_dates,
-        },
-    }
 
 
 def getAssignmentInformation(class_names, class_urls):
@@ -262,15 +242,107 @@ def getQuizCompletionStatus(completion_status_elements):
     completion_status_array = []
     for i in range(len(completion_status_elements)):
         completion_status = completion_status_elements[i].text
-        if(completion_status == " "):
+        if completion_status == " ":
             completion_status = None
         completion_status_array.append(completion_status)
     return completion_status_array
 
+
 def filterAssignmentInformation(assignment_data):
-    assignment_names = assignment_data.get("itemObject").get("itemNames")
-    print(assignment_names)
-    return assignment_data
+    assignment_names = assignment_data["itemObject"].get("itemNames")
+    assignment_completion_statuses = assignment_data["itemObject"].get(
+        "itemCompletionStatuses"
+    )
+    assignment_dates = assignment_data["itemObject"].get("itemDueDates")
+    assignment_names_filtered = []
+    assignment_completion_statuses_filtered = []
+    assignment_dates_filtered = []
+
+    for i in range(len(assignment_names)):
+        date = assignment_dates[i]
+        if date != None:
+            converted_date = datetime.strptime(date, "%b %d, %Y %I:%M %p")
+            if (converted_date >= converted_today) and (
+                assignment_completion_statuses[i] == "Not Submitted"
+            ):
+                assignment_dates_filtered.append(date[0:12])
+                assignment_names_filtered.append(assignment_names[i])
+                assignment_completion_statuses_filtered.append(
+                    assignment_completion_statuses[i]
+                )
+        else:
+            if assignment_completion_statuses[i] == "Not Submitted":
+                assignment_dates_filtered.append(date)
+                assignment_names_filtered.append(assignment_names[i])
+                assignment_completion_statuses_filtered.append(
+                    assignment_completion_statuses[i]
+                )
+
+    assignment_data_filtered = jsonify(
+        assignment_names_filtered,
+        assignment_completion_statuses_filtered,
+        assignment_dates_filtered,
+        assignment_data["class_names"],
+        assignment_data["class_urls"],
+        assignment_data["itemType"],
+    )
+    return assignment_data_filtered
+
+
+def filterQuizInformation(quiz_data):
+    quiz_names = quiz_data["itemObject"].get("itemNames")
+    quiz_completion_statuses = quiz_data["itemObject"].get("itemCompletionStatuses")
+    quiz_dates = quiz_data["itemObject"].get("itemDueDates")
+    quiz_names_filtered = []
+    quiz_completion_statuses_filtered = []
+    quiz_dates_filtered = []
+
+    for i in range(len(quiz_names)):
+        date = quiz_dates[i]
+        if date != None:
+            converted_date = datetime.strptime(date, "%b %d, %Y")
+            if (converted_date >= converted_today) and (
+                quiz_completion_statuses == None
+            ):
+                quiz_dates_filtered.append(date)
+                quiz_names_filtered.append(quiz_names[i])
+                quiz_completion_statuses_filtered.append(quiz_completion_statuses[i])
+        else:
+            if quiz_completion_statuses == None:
+                quiz_dates_filtered.append(date)
+                quiz_names_filtered.append(quiz_names[i])
+                quiz_completion_statuses_filtered.append(quiz_completion_statuses[i])
+
+    quiz_data_filtered = jsonify(
+        quiz_names_filtered,
+        quiz_completion_statuses_filtered,
+        quiz_dates_filtered,
+        quiz_data["class_names"],
+        quiz_data["class_urls"],
+        quiz_data["itemType"],
+    )
+
+    return quiz_data_filtered
+
+
+def jsonify(
+    item_names,
+    item_completion_statuses,
+    item_due_dates,
+    class_names,
+    class_urls,
+    item_type,
+):
+    return {
+        "class_names": class_names,
+        "class_urls": class_urls,
+        "itemType": item_type,
+        "itemObject": {
+            "itemNames": item_names,
+            "itemCompletionStatuses": item_completion_statuses,
+            "itemDueDates": item_due_dates,
+        },
+    }
 
 
 def main():
@@ -322,6 +394,7 @@ def main():
         print(f"Obtaining quiz information for {class_names[i]}...")
 
         quiz_data = getQuizInformation(class_names[i], class_urls[i])
+        quiz_data = filterQuizInformation(quiz_data)
         user_data["quizObjectArray"].append(quiz_data)
         print(f"Retrieved all quiz information for {class_names[i]}...")
 
@@ -331,48 +404,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# def getQuizSubmissions():
-#     tableRoot1 = driver.find_element_by_tag_name("table")
-#     tableRoot2 = tableRoot1.find_elements_by_xpath("//td[@class='d_gn']")
-#     submissions = []
-#     for i in tableRoot2:
-#         submission = i.text
-#         submissions.append(submission)
-#     return submissions
-
-
-# def getQuizNames():
-#     tableRoot1 = driver.find_element_by_tag_name("table")
-#     tableRoot2 = tableRoot1.find_elements_by_xpath("//a[@title='Quiz summary']")
-#     quizNames = []
-#     dates = getQuizDates()
-#     for i in range(0, len(tableRoot2)):
-#         if dates:
-#             d2 = datetime.strptime(dates[i], "%b %d, %Y")
-#             if d2 >= d1:
-#                 quizName = tableRoot2[i].text
-#                 quizNames.append(quizName)
-#     return quizNames
-
-
-# def getQuizDates():
-#     tableRoot1 = driver.find_element_by_tag_name("table")
-#     tableRoot2 = tableRoot1.find_elements_by_xpath(
-#         "//div[@class='drt d2l-htmlblock d2l-htmlblock-untrusted d2l-htmlblock-deferred']"
-#     )
-#     quizDates = []
-#     submissions = getQuizSubmissions()
-#     for i in range(0, len(tableRoot2)):
-#         quizDate = tableRoot2[i].text
-#         quizDate1 = " "
-#         d2 = datetime.today()
-#         if quizDate.split(" ")[0] == "Available":
-#             quizDate1 = quizDate[13:25].strip()
-#             d2 = datetime.strptime(quizDate1, "%b %d, %Y")
-#         if quizDate.split(" ")[0] == "Due":
-#             quizDate1 = quizDate[7:19].strip()
-#             d2 = datetime.strptime(quizDate1, "%b %d, %Y")
-#         if (d2 >= d1) and submissions[i] != "Feedback: On Attempt":
-#             quizDates.append(quizDate1)
-#     return quizDates
