@@ -84,13 +84,7 @@ def filterCourses(shadow_root):
 
 
 def getClasses(shadow_root, panelID):
-<<<<<<< HEAD
     print("Navigating to class_urls...")
-=======
-    # Change classes --> class_urls
-    # Change classNames --> class_names
-    # print("Navigating to classes...")
->>>>>>> refactor(server): modified temp to return JSON and added route to server
     tabRoot1 = shadow_root.find_element_by_id(panelID)
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
     shadow_root3 = expand_shadow_element(root3)
@@ -98,28 +92,17 @@ def getClasses(shadow_root, panelID):
     shadow_root4 = expand_shadow_element(root4)
     root5 = shadow_root4.find_elements_by_css_selector("d2l-enrollment-card")
 
-<<<<<<< HEAD
     print("Obtaining class information...")
     class_urls = []
     class_names = []
-=======
-    # print("Obtaining class information...")
-    classes = []
-    classNames = []
->>>>>>> refactor(server): modified temp to return JSON and added route to server
     for i in root5:
         shadow_root5 = expand_shadow_element(i)
         class1 = shadow_root5.find_element_by_css_selector("d2l-card")
         class_urls.append(class1.get_attribute("href"))
         class_names.append(class1.text.split(":")[0])  # Gets only the course name
 
-<<<<<<< HEAD
     print("Obtained class information...")
     return class_urls, class_names
-=======
-    # print("Obtained class information...")
-    return classes, classNames
->>>>>>> refactor(server): modified temp to return JSON and added route to server
 
 
 def getAssignmentDueDates(due_date_elements):
