@@ -37,7 +37,7 @@ converted_today = datetime.strptime(date1, "%b %d, %Y")
 
 def login(usernameArg, passwordArg):
     # print(driver.current_url)
-    time.sleep(4)
+    time.sleep(5)
     username = driver.find_element_by_name("user_id")
     password = driver.find_element_by_name("pin")
     submit = driver.find_element_by_name("submit")
@@ -54,7 +54,7 @@ def login(usernameArg, passwordArg):
     submit.click()
 
     # print("Waiting for login...")
-    time.sleep(4)
+    time.sleep(5)
 
 
 def expand_shadow_element(element):
@@ -63,7 +63,6 @@ def expand_shadow_element(element):
 
 
 def filterCourses(shadow_root):
-    # Rename filters to semesters and teach jash how to name variabels
     # print("Navigating to Semesters...")
     filterRoot1 = shadow_root.find_element_by_css_selector("d2l-tabs")
     filter_shadow_root1 = expand_shadow_element(filterRoot1)
@@ -326,6 +325,28 @@ def filterQuizInformation(quiz_data):
     return quiz_data_filtered
 
 
+def TodoItem(item_name, item_due_date, item_completion_status):
+    return {
+        "_id": "",
+        "_listId": "",
+        "title": item_name,
+        "description": "",
+        "creationDate": "",
+        "dueDate": item_due_date,
+        "isComplete": item_completion_status,
+    }
+
+
+def TodoList(class_name, todo_items):
+    return {
+        "_id": "",
+        "title": class_name,
+        "description": "",
+        "creationDate": "",
+        "todoItemsCollection": todo_items,
+    }
+
+
 def jsonify(
     item_names,
     item_completion_statuses,
@@ -346,27 +367,39 @@ def jsonify(
     }
 
 
+def createTodoItems(data):
+    item_names = data["itemObject"].get("itemNames")
+    item_due_dates = data["itemObject"].get("itemDueDates")
+    todo_items = []
+    for i in range(len(item_names)):
+        todo_item = TodoItem(item_names[i], item_due_dates[i], False)
+        todo_items.append(todo_item)
+    return todo_items
+
+
 def main():
     username = sys.argv[1]
     password = sys.argv[2]
 
     driver.get(avenueWebsiteURL)
     login(username, password)
-
     root1 = driver.find_element_by_tag_name("d2l-my-courses")
     shadow_root1 = expand_shadow_element(root1)
+
     root2 = shadow_root1.find_element_by_tag_name("d2l-my-courses-container")
     shadow_root2 = expand_shadow_element(root2)
+
     panelID = filterCourses(shadow_root2)
-    time.sleep(4)
+    time.sleep(5)
 
     class_urls, class_names = getClasses(shadow_root2, panelID)
 
     user_data = {
         "user": {"username": username, "password": password},
-        "assignmentObjectArray": [],
-        "quizObjectArray": [],
+        "data": {"TodoList": []},
     }
+
+    data = []
 
     for i in range(len(class_urls)):
         uniqueClassID = class_urls[i][10:16]
@@ -380,9 +413,12 @@ def main():
 
         # print(f"Obtaining assignment information for {class_names[i]}...")
 
+        todo_list = TodoList(class_names[i], [])
         assignment_data = getAssignmentInformation(class_names[i], class_urls[i])
-        assignment_data = filterAssignmentInformation(assignment_data)
-        user_data["assignmentObjectArray"].append(assignment_data)
+        assignment_data_filtered = filterAssignmentInformation(assignment_data)
+        todo_items_assignments = createTodoItems(assignment_data_filtered)
+        todo_list = TodoList(class_names[i], todo_items_assignments)
+        data.append(todo_list)
         # print(f"Retrieved all assignment information for {class_names[i]}...")
 
     for i in range(len(class_urls)):
@@ -397,11 +433,13 @@ def main():
         # print(f"Obtaining quiz information for {class_names[i]}...")
 
         quiz_data = getQuizInformation(class_names[i], class_urls[i])
-        quiz_data = filterQuizInformation(quiz_data)
-        user_data["quizObjectArray"].append(quiz_data)
+        quiz_data_filtered = filterQuizInformation(quiz_data)
+        todo_items_quizzes = createTodoItems(quiz_data_filtered)
+        if data[i]["title"] == class_names[i]:
+            data[i]["todoItemsCollection"].extend(todo_items_quizzes)
+        user_data["data"]["TodoList"].append(data[i])
         # print(f"Retrieved all quiz information for {class_names[i]}...")
 
-    print(json.dumps(user_data))
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
 

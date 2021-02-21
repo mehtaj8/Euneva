@@ -1,130 +1,154 @@
 {
-    "user": { "username": "shara24", "password": "Reshiram08" },
-    "assignmentObjectArray": [
-        {
-            "class_names": "SFWRENG 3XA3",
-            "class_urls": "/d2l/home/376170",
-            "itemType": "Assignments",
-            "itemObject": {
-                "itemNames": [],
-                "itemCompletionStatuses": [],
-                "itemDueDates": []
-            }
-        },
-        {
-            "class_names": "HTHSCI 3G03",
-            "class_urls": "/d2l/home/376130",
-            "itemType": "Assignments",
-            "itemObject": {
-                "itemNames": [
-                    "Prognosis/Risk SUBMISSION folder",
-                    "Diagnostic Test Validity",
-                    "Systematic Reviews"
-                ],
-                "itemCompletionStatuses": [
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "itemDueDates": ["Mar 13, 2021", "Mar 27, 2021", "Apr 10, 2021"]
-            }
-        },
-        {
-            "class_names": "IBEHS 3P04",
-            "class_urls": "/d2l/home/340984",
-            "itemType": "Assignments",
-            "itemObject": {
-                "itemNames": [
-                    "Assignment 1",
-                    "DS Team 35: Design Project M3-Friday Section",
-                    "Project Zero Final Submission - Friday"
-                ],
-                "itemCompletionStatuses": [
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "itemDueDates": ["Feb 24, 2021", "Feb 26, 2021", "Feb 26, 2021"]
-            }
-        },
-        {
-            "class_names": "SFWRENG 2GA3",
-            "class_urls": "/d2l/home/338214",
-            "itemType": "Assignments",
-            "itemObject": {
-                "itemNames": ["Assignment 2"],
-                "itemCompletionStatuses": ["Not Submitted"],
-                "itemDueDates": ["Mar 1, 2021 "]
-            }
-        },
-        {
-            "class_names": "CHEM 1AA3",
-            "class_urls": "/d2l/home/335605",
-            "itemType": "Assignments",
-            "itemObject": {
-                "itemNames": [],
-                "itemCompletionStatuses": [],
-                "itemDueDates": []
-            }
-        }
-    ],
-    "quizObjectArray": [
-        {
-            "class_names": "SFWRENG 3XA3",
-            "class_urls": "/d2l/home/376170",
-            "itemType": "Quizzes",
-            "itemObject": {
-                "itemNames": [],
-                "itemCompletionStatuses": [],
-                "itemDueDates": []
-            }
-        },
-        {
-            "class_names": "HTHSCI 3G03",
-            "class_urls": "/d2l/home/376130",
-            "itemType": "Quizzes",
-            "itemObject": {
-                "itemNames": [
-                    "Minor Assignment_Non-Randomized Observational Designs"
-                ],
-                "itemCompletionStatuses": [null],
-                "itemDueDates": ["Feb 27, 2021"]
-            }
-        },
-        {
-            "class_names": "IBEHS 3P04",
-            "class_urls": "/d2l/home/340984",
-            "itemType": "Quizzes",
-            "itemObject": {
-                "itemNames": [],
-                "itemCompletionStatuses": [],
-                "itemDueDates": []
-            }
-        },
-        {
-            "class_names": "SFWRENG 2GA3",
-            "class_urls": "/d2l/home/338214",
-            "itemType": "Quizzes",
-            "itemObject": {
-                "itemNames": [],
-                "itemCompletionStatuses": [],
-                "itemDueDates": []
-            }
-        },
-        {
-            "class_names": "CHEM 1AA3",
-            "class_urls": "/d2l/home/335605",
-            "itemType": "Quizzes",
-            "itemObject": {
-                "itemNames": ["Quiz 3", "Quiz 4", "Quiz 5", "Quiz 6"],
-                "itemCompletionStatuses": [null, null, null, null],
-                "itemDueDates": [
-                    "Feb 25, 2021",
-                    "Mar 11, 2021",
-                    "Mar 25, 2021",
-                    "Apr 8, 2021"
+    "user": { "username": "", "password": "" },
+    "data": {
+        "TodoList": [
+            {
+                "_id": "",
+                "title": "SFWRENG 3XA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": []
+            },
+            {
+                "_id": "",
+                "title": "HTHSCI 3G03",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Prognosis/Risk SUBMISSION folder",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 13, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Diagnostic Test Validity",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 27, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Systematic Reviews",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 10, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Minor Assignment_Non-Randomized Observational Designs",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Feb 27, 2021",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "IBEHS 3P04",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Assignment 1",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Feb 24, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "DS Team 35: Design Project M3-Friday Section",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Feb 26, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Project Zero Final Submission - Friday",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Feb 26, 2021",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "SFWRENG 2GA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Assignment 2",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 1, 2021 ",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "CHEM 1AA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 3",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Feb 25, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 4",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 11, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 5",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 25, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 6",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 8, 2021",
+                        "isComplete": false
+                    }
                 ]
             }
-        }
-    ]
+        ]
+    }
 }
