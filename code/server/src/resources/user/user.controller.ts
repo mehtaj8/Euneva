@@ -7,7 +7,7 @@ export const getAvenueData = () => {
         var exec = require('child_process').execSync;
         exec('cd ../../../');
         var result = exec(
-            `python3 ./python_files/scrapeAvenue.py ${request.query.username} ${request.query.password}`
+            `python3 ./python_files/temp.py ${request.query.username} ${request.query.password}`
         );
         return response.status(200).json({
             data: result.toString('utf8')
