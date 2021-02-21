@@ -386,6 +386,7 @@ def main():
         # print(f"Retrieved all assignment information for {class_names[i]}...")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     for i in range(len(class_urls)):
         uniqueClassID = class_urls[i][10:16]
         quizURL = (
@@ -419,6 +420,24 @@ def main():
         # print(f"Obtained quiz information for {class_names[i]}...")
 >>>>>>> refactor(server): modified temp to return JSON and added route to server
 
+=======
+        # for i in range(len(class_urls)):
+        #     uniqueClassID = class_urls[i][10:16]
+        #     quizzesURL = (
+        #         "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
+        #         + uniqueClassID
+        #     )
+
+        #     driver.get(quizzesURL)
+
+        # print(f"Obtaining quiz information for {class_names[i]}...")
+        #     quizNames = getQuizNames()
+        #     quizDates = getQuizDates()
+        # print(f"Quiz Names for {class_names[i]}: {quizNames}")
+        # print(f"Quiz Dates for {class_names[i]}: {quizDates}")
+        # print(f"Obtained quiz information for {class_names[i]}...")
+
+>>>>>>> 03d63e48c9ce0c7e667faf2ff5ba3e637aede46d
     print(json.dumps(user_data))
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
