@@ -302,13 +302,13 @@ def filterQuizInformation(quiz_data):
         if date != None:
             converted_date = datetime.strptime(date, "%b %d, %Y")
             if (converted_date >= converted_today) and (
-                quiz_completion_statuses == None
+                quiz_completion_statuses[i] == None
             ):
                 quiz_dates_filtered.append(date)
                 quiz_names_filtered.append(quiz_names[i])
                 quiz_completion_statuses_filtered.append(quiz_completion_statuses[i])
         else:
-            if quiz_completion_statuses == None:
+            if quiz_completion_statuses[i] == None:
                 quiz_dates_filtered.append(date)
                 quiz_names_filtered.append(quiz_names[i])
                 quiz_completion_statuses_filtered.append(quiz_completion_statuses[i])
