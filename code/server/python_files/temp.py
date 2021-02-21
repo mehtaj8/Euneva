@@ -84,7 +84,7 @@ def filterCourses(shadow_root):
 
 
 def getClasses(shadow_root, panelID):
-    print("Navigating to class_urls...")
+    # print("Navigating to class_urls...")
     tabRoot1 = shadow_root.find_element_by_id(panelID)
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
     shadow_root3 = expand_shadow_element(root3)
@@ -92,7 +92,7 @@ def getClasses(shadow_root, panelID):
     shadow_root4 = expand_shadow_element(root4)
     root5 = shadow_root4.find_elements_by_css_selector("d2l-enrollment-card")
 
-    print("Obtaining class information...")
+    # print("Obtaining class information...")
     class_urls = []
     class_names = []
     for i in root5:
@@ -101,7 +101,7 @@ def getClasses(shadow_root, panelID):
         class_urls.append(class1.get_attribute("href"))
         class_names.append(class1.text.split(":")[0])  # Gets only the course name
 
-    print("Obtained class information...")
+    # print("Obtained class information...")
     return class_urls, class_names
 
 
@@ -385,8 +385,6 @@ def main():
         user_data["assignmentObjectArray"].append(assignment_data)
         # print(f"Retrieved all assignment information for {class_names[i]}...")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     for i in range(len(class_urls)):
         uniqueClassID = class_urls[i][10:16]
         quizURL = (
@@ -396,48 +394,13 @@ def main():
 
         driver.get(quizURL)
 
-        print(f"Obtaining quiz information for {class_names[i]}...")
+        # print(f"Obtaining quiz information for {class_names[i]}...")
 
         quiz_data = getQuizInformation(class_names[i], class_urls[i])
         quiz_data = filterQuizInformation(quiz_data)
         user_data["quizObjectArray"].append(quiz_data)
-        print(f"Retrieved all quiz information for {class_names[i]}...")
-=======
-        # for i in range(len(class_urls)):
-        #     uniqueClassID = class_urls[i][10:16]
-        #     quizzesURL = (
-        #         "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
-        #         + uniqueClassID
-        #     )
+        # print(f"Retrieved all quiz information for {class_names[i]}...")
 
-        #     driver.get(quizzesURL)
-
-        # print(f"Obtaining quiz information for {class_names[i]}...")
-        #     quizNames = getQuizNames()
-        #     quizDates = getQuizDates()
-        # print(f"Quiz Names for {class_names[i]}: {quizNames}")
-        # print(f"Quiz Dates for {class_names[i]}: {quizDates}")
-        # print(f"Obtained quiz information for {class_names[i]}...")
->>>>>>> refactor(server): modified temp to return JSON and added route to server
-
-=======
-        # for i in range(len(class_urls)):
-        #     uniqueClassID = class_urls[i][10:16]
-        #     quizzesURL = (
-        #         "https://avenue.cllmcmaster.ca/d2l/lms/quizzing/user/quizzes_list.d2l?ou="
-        #         + uniqueClassID
-        #     )
-
-        #     driver.get(quizzesURL)
-
-        # print(f"Obtaining quiz information for {class_names[i]}...")
-        #     quizNames = getQuizNames()
-        #     quizDates = getQuizDates()
-        # print(f"Quiz Names for {class_names[i]}: {quizNames}")
-        # print(f"Quiz Dates for {class_names[i]}: {quizDates}")
-        # print(f"Obtained quiz information for {class_names[i]}...")
-
->>>>>>> 03d63e48c9ce0c7e667faf2ff5ba3e637aede46d
     print(json.dumps(user_data))
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)

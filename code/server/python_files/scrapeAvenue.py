@@ -35,24 +35,24 @@ converted_today = datetime.strptime(date1, "%b %d, %Y")
 
 
 def login():
-    print(driver.current_url)
+    # print(driver.current_url)
     time.sleep(5)
     username = driver.find_element_by_name("user_id")
     password = driver.find_element_by_name("pin")
     submit = driver.find_element_by_name("submit")
 
-    print("Clearing Username and Password...")
+    # print("Clearing Username and Password...")
     username.clear()
     password.clear()
 
-    print("Entering Username and Password...")
+    # print("Entering Username and Password...")
     username.send_keys(os.getenv("macid"))
     password.send_keys(os.getenv("pass"))
 
-    print("Submitting Username and Password...")
+    # print("Submitting Username and Password...")
     submit.click()
 
-    print("Waiting for login...")
+    # print("Waiting for login...")
     time.sleep(5)
 
 
@@ -63,12 +63,12 @@ def expand_shadow_element(element):
 
 def filterCourses(shadow_root):
     # Rename filters to semesters and teach jash how to name variabels
-    print("Navigating to Semesters...")
+    # print("Navigating to Semesters...")
     filterRoot1 = shadow_root.find_element_by_css_selector("d2l-tabs")
     filter_shadow_root1 = expand_shadow_element(filterRoot1)
     filterRoot2 = filter_shadow_root1.find_elements_by_css_selector("d2l-tab-internal")
 
-    print("Navigating to current semester...")
+    # print("Navigating to current semester...")
     filters = []
     for i in filterRoot2:
         filters.append(i)
@@ -78,12 +78,12 @@ def filterCourses(shadow_root):
     panelID = filter1.get_attribute("controls-panel")
     filter1.click()
 
-    print("Reached current semester...")
+    # print("Reached current semester...")
     return panelID
 
 
 def getClasses(shadow_root, panelID):
-    print("Navigating to class_urls...")
+    # print("Navigating to class_urls...")
     tabRoot1 = shadow_root.find_element_by_id(panelID)
     root3 = tabRoot1.find_element_by_css_selector("d2l-my-courses-content")
     shadow_root3 = expand_shadow_element(root3)
@@ -91,7 +91,7 @@ def getClasses(shadow_root, panelID):
     shadow_root4 = expand_shadow_element(root4)
     root5 = shadow_root4.find_elements_by_css_selector("d2l-enrollment-card")
 
-    print("Obtaining class information...")
+    # print("Obtaining class information...")
     class_urls = []
     class_names = []
     for i in root5:
@@ -100,7 +100,7 @@ def getClasses(shadow_root, panelID):
         class_urls.append(class1.get_attribute("href"))
         class_names.append(class1.text.split(":")[0])  # Gets only the course name
 
-    print("Obtained class information...")
+    # print("Obtained class information...")
     return class_urls, class_names
 
 
@@ -375,12 +375,12 @@ def main():
 
         driver.get(assignmentURL)
 
-        print(f"Obtaining assignment information for {class_names[i]}...")
+        # print(f"Obtaining assignment information for {class_names[i]}...")
 
         assignment_data = getAssignmentInformation(class_names[i], class_urls[i])
         assignment_data = filterAssignmentInformation(assignment_data)
         user_data["assignmentObjectArray"].append(assignment_data)
-        print(f"Retrieved all assignment information for {class_names[i]}...")
+        # print(f"Retrieved all assignment information for {class_names[i]}...")
 
     for i in range(len(class_urls)):
         uniqueClassID = class_urls[i][10:16]
@@ -391,13 +391,14 @@ def main():
 
         driver.get(quizURL)
 
-        print(f"Obtaining quiz information for {class_names[i]}...")
+        # print(f"Obtaining quiz information for {class_names[i]}...")
 
         quiz_data = getQuizInformation(class_names[i], class_urls[i])
         quiz_data = filterQuizInformation(quiz_data)
         user_data["quizObjectArray"].append(quiz_data)
-        print(f"Retrieved all quiz information for {class_names[i]}...")
+        # print(f"Retrieved all quiz information for {class_names[i]}...")
 
+    print(json.dumps(user_data))
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
 
