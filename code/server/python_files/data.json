@@ -2,104 +2,86 @@
     "user": { "username": "", "password": "" },
     "assignmentObjectArray": [
         {
-            "class_names": "SFWRENG 3XA3",
-            "class_urls": "/d2l/home/376170",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Submit files to Projects lab section1",
-                    "Submit files to Projects lab section 2",
-                    "Submit files to Projects lab section 3"
-                ],
-                "assignmentCompletionStatuses": [
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Jan 29, 2021 11:59 PM",
-                    "Jan 29, 2021 11:59 PM",
-                    "Jan 29, 2021 11:59 PM"
-                ]
-            }
-        },
-        {
-            "class_names": "HTHSCI 3G03",
-            "class_urls": "/d2l/home/376130",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Submit files to Prognosis/Risk SUBMISSION folder",
-                    "Submit files to Diagnostic Test Validity",
-                    "Submit files to RCT",
-                    "Submit files to Systematic Reviews"
-                ],
-                "assignmentCompletionStatuses": [
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Mar 13, 2021 11:59 PM",
-                    "Mar 27, 2021 11:59 PM",
-                    "Feb 13, 2021 11:59 PM",
-                    "Apr 10, 2021 11:59 PM"
-                ]
-            }
-        },
-        {
-            "class_names": "IBEHS 3P04",
-            "class_urls": "/d2l/home/340984",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Submit files to Assignment 1",
-                    "Submit files to Design Project M1 - Friday Section",
-                    "Submit files to Design Project M2-Friday Section",
-                    "Submit files to Design Project M3-Friday Section",
-                    "Submit files to Project Zero Final Submission - Friday"
-                ],
-                "assignmentCompletionStatuses": [
-                    "Not Submitted",
-                    "1 Submission, 1 File",
-                    "2 Submissions, 4 Files",
-                    "Not Submitted",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Feb 24, 2021 11:59 PM",
-                    "Jan 22, 2021 11:59 PM",
-                    "Feb 5, 2021 11:59 PM",
-                    "Feb 26, 2021 11:59 PM",
-                    "Feb 26, 2021 10:20 AM"
-                ]
-            }
-        },
-        {
             "class_names": "SFWRENG 2GA3",
-            "class_urls": "/d2l/home/338214",
-            "assignmentObject": {
-                "assignmentNames": [
-                    "Assignment 1",
-                    "Submit files to Assignment 2"
-                ],
-                "assignmentCompletionStatuses": [
-                    "2 Submissions, 3 Files",
-                    "Not Submitted"
-                ],
-                "assignmentDueDates": [
-                    "Feb 8, 2021 5:00 PM",
-                    "Mar 1, 2021 11:59 PM"
-                ]
+            "class_urls": "/d2l/home/326281",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
             }
         },
         {
-            "class_names": "CHEM 1AA3",
-            "class_urls": "/d2l/home/335605",
-            "assignmentObject": {
-                "assignmentNames": ["Exp 9 FlowChart - Synthesis of Aspirin"],
-                "assignmentCompletionStatuses": [null],
-                "assignmentDueDates": ["Mar 26, 2021 11:59 PM"]
+            "class_names": "MUSIC 2MT3",
+            "class_urls": "/d2l/home/292245",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        },
+        {
+            "class_names": "SFWRENG 2XB3",
+            "class_urls": "/d2l/home/313036",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        },
+        {
+            "class_names": "SFWRENG 2C03",
+            "class_urls": "/d2l/home/310604",
+            "itemType": "Assignments",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
             }
         }
     ],
-    "quizObjectArray": []
+    "quizObjectArray": [
+        {
+            "class_names": "SFWRENG 2GA3",
+            "class_urls": "/d2l/home/326281",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        },
+        {
+            "class_names": "MUSIC 2MT3",
+            "class_urls": "/d2l/home/292245",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        },
+        {
+            "class_names": "SFWRENG 2XB3",
+            "class_urls": "/d2l/home/313036",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        },
+        {
+            "class_names": "SFWRENG 2C03",
+            "class_urls": "/d2l/home/310604",
+            "itemType": "Quizzes",
+            "itemObject": {
+                "itemNames": [],
+                "itemCompletionStatuses": [],
+                "itemDueDates": []
+            }
+        }
+    ]
 }
