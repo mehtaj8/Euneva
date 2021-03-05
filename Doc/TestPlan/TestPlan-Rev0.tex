@@ -1,0 +1,333 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Plan\\Euneva}
+
+\author{Team 9, Euneva
+		\\ Mehta, Jash - mehtaj8
+		\\ Sharma, Aditya - shara24
+		\\ Ren, Zackary - renx11
+}
+
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+04/03/2021 & 1.0 & Initial version of Test Plan (all members)\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{General Information}
+
+\subsection{Purpose}
+
+The purpose of this document is to provide a plan for testing, validation, and verification procedures for the Avenue linked To-Do list software being implemented. The program will need to interpret user input and present accurate output. These components will be tested to build confidence that the software project will function as intended.
+
+\subsection{Scope}
+
+This document outlines the tests that will be done for testing the functional and non-functional requirements and proof of concept. The scope of testing will primarily cover the accuracy of the output and logic.
+
+\subsection{Acronyms, Abbreviations, and Symbols}
+
+\begin{table}[H]
+\caption{Table of Abbreviations}
+\begin{center}
+\begin{tabular}{ |m{10em}|m{20em}|} 
+ \hline
+ Abbreviation & Definition \\ 
+ \hline
+ UI & User Interface \\
+ \hline
+ JSON & JavaScript Object Notation, a readable file format to transmit data objects\\ 
+ \hline
+ JS & JavaScript\\
+ \hline 
+ CSS & Cascading Style Sheets\\
+ \hline
+ TS & TypeScript\\
+ \hline
+\end{tabular}
+\end{center}
+\label{abbrev}
+\end{table}
+
+\begin{table}[H]
+\caption{Table of Definitions}
+\begin{center}
+\begin{tabular}{ |m{10em}|m{20em}|} 
+ \hline
+ Term & Definition \\ 
+ \hline
+ Structural Testing & Type of testing carried out to test the structure of the code \\
+ \hline
+ Functional Testing & Type of software testing that validates the software system based on the functional requirements\\ 
+ \hline
+ Dynamic Testing & Type of testing that validates the behaviour and performance of the software system\\
+ \hline 
+ Static Testing & Type of testing where the actual program or application is not used\\
+ \hline
+ Manual Testing & Type of software testing that involves the Testers to annually execute the tests\\
+ \hline
+ Automated Testing & Type of software testing that involves the use of special testing software that controls the execution of tests and compares the results to the expected\\
+ \hline
+ Unit Testing & Type of software testing where the individual units/components of the software are tested\\
+ \hline
+ System Testing & Type of testing where a complete and integrated software is tested from the internal structure\\
+ \hline
+ Integration Testing & Type of software testing where individual components are tested in groups\\
+ \hline
+ React & An Open-Source application framework\\
+ \hline
+ Group-9 & Project Team\\
+ \hline
+\end{tabular}
+\end{center}
+\label{defs}
+\end{table}
+
+\subsection{Overview of Document}
+
+This document will walk through the test plan for Euneva, this includes a plan for how the testing will be conducted, a system test description which goes over the tests for the functional and non-functional requirements, a plan for testing proof of concept, and a unit testing plan.
+
+\section{Plan}
+
+\subsection{Software Description}
+
+This software will allow students from McMaster University to access Avenue to Learn assignments and quizzes for each class in one convenient location. The Front-End To-Do list application is made using the React web application framework, whilst the Back-End is implemented in Node. Python is used for the web-scraping done on Avenue to Learn.
+
+\subsection{Test Team}
+
+The test team will consist of Group-9 members involved in the development of the project. The test team members are, Jash Mehta, Aditya Sharma, Zackary Ren.
+
+\subsection{Automated Testing Approach}
+
+The overwhelming majority of our project’s functionality consists of user interaction. Therefore we determined that it would be costly to create a suit of unit tests of all base logic. Instead, our testing technique will be a manual test suite that ensures the correct responses to the user’s input. If each test passes it is implied that the underlying logical functionality of our program corresponds properly.
+
+\subsection{Testing Tools}
+
+The testing for this project will be done with PyTest, which is a testing suite framework for Python projects, which deals with unit testing and code coverage. As mentioned earlier, the Python component of our project is used for web-scraping; however, there are some functions that carry out tasks like data cleaning and data processing. These functions will be tested via PyTest.
+
+\subsection{Testing Schedule}
+
+See Gantt Chart for Testing Schedule. INSERT LINK HERE
+
+\section{System Test Description}
+
+\subsection{Tests for Functional Requirements}
+
+\subsubsection{Database Interactions}
+
+\begin{enumerate}
+\item{test-DB1\\}
+\end{enumerate}
+
+\subsubsection{UI}
+
+\begin{enumerate}
+\item{test-UI1\\}
+
+Type: Functional, Automated\\
+Initial State: The app has been deployed\\
+Input: N/A\\
+Output: A boolean response\\
+How test will be performed: An automated test will be written that checks if a button to log into Avenue is rendered\\
+Mapping: FR1
+
+\item{test-UI2\\}
+
+Type: Functional\\
+Initial State: The app has been deployed\\
+Input: N/A\\
+Output: A boolean response\\
+How test will be performed: An automated test will be written that checks if a button exists that adds an item to the list\\
+Mapping: FR2
+
+\item{test-UI3\\}
+
+Type: Functional\\
+Initial State: The app has been deployed\\
+Input: N/A\\
+Output: A boolean response\\
+How test will be performed: An automated test will be written that checks if each item has a date assigned and displayed to it\\
+Mapping: FR3
+
+\item{test-UI4\\}
+
+Type: Functional\\
+Initial State: The app has been deployed\\
+Input: N/A\\
+Output: A boolean response\\
+How test will be performed: An automated test will be written that if the item name, due date, time and update button occurs when editing the item\\
+Mapping: FR6
+
+\item{test-UI5\\}
+
+Type: Functional\\
+Initial State: An item has been added\\
+Input: User marks item as completed via click\\
+Output: Item disappears from list\\
+How test will be performed: A visual test will be performed to confirm that the item that has been clicked is no longer being rendered\\
+Mapping: FR8, 10
+
+\item{test-UI6\\}
+
+Type: Functional\\
+Initial State: An item has been added\\
+Input: Random user input to an item’s name\\
+Output: An update in the items information\\
+How test will be performed: A visual test will be performed to confirm that when an item is edited, its changes are being reflected and rendered\\
+Mapping: FR9
+
+\end{enumerate}
+
+\subsection{Tests for Non-Functional Requirements}
+
+\subsubsection{Look and Feel Requirements}
+
+\begin{enumerate}
+\item {test-LFA1\\}
+
+Type: Functional\\
+Initial State: The web app has been loaded\\
+Input: N/A\\
+Output: N/A\\
+How test will be performed: A visual test will be performed to confirm that the product looks similar to Apple’s Reminders Application\\
+Mapping: LFA1, LFS1
+
+\end{enumerate}
+
+\subsubsection{Usability and Humanity Requirements}
+
+\begin{enumerate}
+\item{test-UHE1\\}
+
+Type: !!!!!\\
+Initial State: The web app has been loaded\\
+Input: N/A\\
+Output: N/A\\
+How test will be performed: A interaction based assessment will be conducted by having an adult not involved in development use the product and provide their feedback in terms of learning to use the product and navigating the product\\
+Mapping: UHE1, UHP1, UHA1
+\end{enumerate}
+
+\subsubsection{Performance Requirements}
+
+\begin{enumerate}
+\item{test-PSL1\\}
+
+Type: !!!!\\
+Initial State: The backend of the application will be loaded\\
+Input: Requests will be sent to each route\\
+Output: The routes will retrieve and send back the data requested with the response time\\
+How test will be performed: The backend server will be initialized and requests to all routes will be sent to it. The routes will return the data along with the response time. The response time should be less than the RESPONSE\_TIME\\
+Mapping: PSL1
+
+\end{enumerate}
+
+\subsection{Traceability Between Test Cases and Requirements}
+
+The following table maps test cases to their respective requirements.
+
+\begin{table}[H]
+\caption{Requirements Traceability Matrix}
+\begin{center}
+\begin{tabular}{ |m{7em}|m{20em}|m{6em}|} 
+ \hline
+ Requirement ID & Description of Fit Criterion & Test ID(s) \\ 
+ \hline
+ FR1 & A button is rendered allowing the user to log-in to Avenue to Learn & UI1 \\
+ \hline
+ FR2 & A button allows the user to add a task to the to-do list & UI2\\ 
+ \hline
+ FR3 & The applications displays relevant information pertaining to a certain date & UI3\\
+ \hline 
+ FR6 & Display confirmation message when a task is added & UI4\\
+ \hline
+ FR8, FR10 & Task is removed from to-do list upon completion or deletion & UI5\\
+ \hline
+ FR9 & The user can edit a task & UI6\\
+ \hline
+ LFA1, LFS1 & The application will have an intuitive user flow and simplistic UI & LFA1\\
+ \hline
+ UHE1, UHP1, UHA1 & The user can navigate throughout the application with ease & UHE1\\
+ \hline 
+ PSL1 & The application responds to user actions after RESPONSE\_TIME & PSL1\\
+ \hline
+\end{tabular}
+\end{center}
+\label{traceability}
+\end{table}
+
+\section{Tests for Proof of Concept}
+
+\subsection{Application Testing}
+
+\begin{enumerate}
+\item{test-POC1\\}
+
+Type: Functional, Dynamic, Manual\\
+Initial state: The web app has been loaded\\
+Input: The user interacts with the application\\
+Output: The application displays appropriate response when the respective action is performed\\
+How the test will be performed: The user will interact with different aspects of the application and the expected response will be visually confirmed
+\end{enumerate}
+
+\section{Unit Testing Plan}
+
+\subsection{Unit Testing of Internal Functions}
+
+Internal functions of the program will be methods that will have return values or execute a specific task. Unit tests for internal functions will involve having various inputs for the methods, and comparing the methods output to the expected output. Unit tests will include various inputs for methods consisting of normal inputs, boundary inputs, and inputs that will generate exceptions and errors for the program. The unit tests will display test cases that have passed, and test cases that have failed with appropriate reasoning behind the failure. Coverage methods, such as code coverage and branch coverage, will be used to determine how much of the program has been covered by the unit testing.
+
+\subsection{Unit Testing of Output Files}
+
+The application does not produce an output file. Therefore, there is no requirement to perform testing on an output file.
+
+\section{Appendix}
+
+\subsection{Symbolic Parameters}
+
+SP1. \textbf{RESPONSE\_TIME}: 2 seconds
+
+\subsection{Usability Survey Questions}
+
+We want to question users on their experience with our application to gauge whether or not it accomplishes our goal of alleviating some stress from academics. \\
+
+\begin{enumerate}
+\item{Did you have any difficulties navigating throughout the application?}
+\item{Did the user onboarding help with navigation around the application?}
+\item{Did the use of the application reduce academic related stress?}
+\item{Did it take long to get familiar with the application? If so, what felt unnatural?}
+\item{Were there any features you wish were added?}
+\end{enumerate}
+
+
+\end{document}
