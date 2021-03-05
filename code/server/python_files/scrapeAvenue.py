@@ -1,3 +1,7 @@
+## @brief Scraping functionality for Avenue to Learn
+# @author Jash Mehta, Aditya Sharma
+# @title Scrape Avenue
+
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import requests
