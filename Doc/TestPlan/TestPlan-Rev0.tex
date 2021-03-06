@@ -139,17 +139,12 @@ The testing for this project will be done with PyTest, which is a testing suite 
 
 \subsection{Testing Schedule}
 
-See Gantt Chart for Testing Schedule. INSERT LINK HERE
+See \href{https://gitlab.cas.mcmaster.ca/renx11/3xa3-project-l02-group9/-/blob/master/ProjectSchedule/EuenvaGantt.pdf}{Gantt Chart} for Testing Schedule.
 
 \section{System Test Description}
 
 \subsection{Tests for Functional Requirements}
 
-\subsubsection{Database Interactions}
-
-\begin{enumerate}
-\item{test-DB1\\}
-\end{enumerate}
 
 \subsubsection{UI}
 
@@ -231,7 +226,7 @@ Mapping: LFA1, LFS1
 \begin{enumerate}
 \item{test-UHE1\\}
 
-Type: !!!!!\\
+Type: Manual\\
 Initial State: The web app has been loaded\\
 Input: N/A\\
 Output: N/A\\
@@ -244,13 +239,78 @@ Mapping: UHE1, UHP1, UHA1
 \begin{enumerate}
 \item{test-PSL1\\}
 
-Type: !!!!\\
+Type: Automated, Functional\\
 Initial State: The backend of the application will be loaded\\
 Input: Requests will be sent to each route\\
 Output: The routes will retrieve and send back the data requested with the response time\\
 How test will be performed: The backend server will be initialized and requests to all routes will be sent to it. The routes will return the data along with the response time. The response time should be less than the RESPONSE\_TIME\\
 Mapping: PSL1
 
+\item{test-PPA1\\}
+
+Type: Automated\\
+Initial State: The app has been deployed\\
+Input: A task is added to the list\\
+Output: The correct information about the task is saved\\
+How test will be performed: An automated test will add different tasks to the list and check if the correct information is saved\\
+Mapping: PPA1\\
+
+\item{test-PRA1\\}
+
+Type: Manual\\
+Initial State: The web app has been loaded\\
+Input: User interacts with the application\\
+Output: Application renders appropriate data on device\\
+How test will be performed: A tester will confirm the application can be accessed on a device and upon interacting, the expected behaviour is observed\\
+Mapping: PRA1, PRA2, PRF1\\
+
+\item{test-PCR1\\}
+
+Type: Manual\\
+Initial State: The web app has been loaded\\
+Input: User interacts with the application\\
+Output: N/A\\
+How test will be performed: The application will be used by NUMBER\_OF\_USERS at the same time and the performance will be evaluated\\
+Mapping: PCR1\\
+\end{enumerate}
+
+\subsubsection{Operational and Environmental Requirements}
+
+\begin{enumerate}
+\item{test-OER1\\}
+
+Type: Manual\\
+Initial State: The web app has been loaded\\
+Input: N/A\\
+Output: N/A\\
+How test will be performed: A tester will access the application on multiple different devices that can connect to the Internet\\
+Mapping: EPE1, RIAS1, RR1, RR2\\
+\end{enumerate}
+
+\subsubsection{Security Requirements}
+
+\begin{enumerate}
+\item{test-SR1\\}
+
+Type: Manual\\
+Initial State: The app has been loaded\\
+Input: User enters their log-in credentials\\
+Output: To-do list syncs with Avenue\\
+How test will be performed: A tester will enter the log-in information of verified McMaster Students and random log-in information to confirm only McMaster students have access to the application\\
+Mapping: AR1, AR2, IR1, PR1, PR2\\
+\end{enumerate}
+
+\subsubsection{Cultural Requirements}
+
+\begin{enumerate}
+\item{test-CR1\\}
+
+Type: Manual\\
+Initial State: The app has been loaded\\
+Input: N/A\\
+Output: N/A\\
+How test will be performed: A tester will examine the application and ensure it is written in English and there are no inappropriate graphics or text\\
+Mapping: CPC1, CPC2\\
 \end{enumerate}
 
 \subsection{Traceability Between Test Cases and Requirements}
@@ -281,6 +341,18 @@ The following table maps test cases to their respective requirements.
  UHE1, UHP1, UHA1 & The user can navigate throughout the application with ease & UHE1\\
  \hline 
  PSL1 & The application responds to user actions after RESPONSE\_TIME & PSL1\\
+ \hline
+ PPA1 & The information of a task accurately reflects information on Avenue & PPA1\\
+ \hline
+ PRA1, PRA2, PRF1 & The application can be accessed on a device connected to the Internet & PRA1\\
+ \hline
+ PCR1 & The application can support NUMBER\_OF\_USERS at a time & PCR1\\
+ \hline
+ EPE1, RIAS1, RR1, RR2 & The application can be accessed on different types of devices connected to the Internet & OER1\\
+ \hline
+ AR1, AR2, IR1 & Only McMaster students can access the application & SR1\\
+ \hline
+ CPC1, CPC2 & The application displays text in English, without offensive graphics or text. & CR1\\
  \hline
 \end{tabular}
 \end{center}
@@ -315,7 +387,8 @@ The application does not produce an output file. Therefore, there is no requirem
 
 \subsection{Symbolic Parameters}
 
-SP1. \textbf{RESPONSE\_TIME}: 2 seconds
+SP1. \textbf{RESPONSE\_TIME}: 2 seconds\\
+SP2. \textbf{NUMBER\_OF\_USERS}: 50
 
 \subsection{Usability Survey Questions}
 
