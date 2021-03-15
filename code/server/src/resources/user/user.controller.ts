@@ -9,8 +9,10 @@ export const getAvenueData = () => {
         var result = exec(
             `python3 ./python_files/scrapeAvenue.py ${request.query.username} ${request.query.password}`
         );
+        var stringData = result.toString('utf8');
+        stringData.replace(/'/g, '"');
         return response.status(200).json({
-            data: result.toString('utf8')
+            data: JSON.parse(stringData)
         });
     };
 };

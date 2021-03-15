@@ -510,7 +510,7 @@ def main():
         user_data["data"]["TodoList"].append(data[i])
         # print(f"Retrieved all quiz information for {class_names[i]}...")
 
-    print(user_data)
+    print(json.dumps(user_data))
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
 
