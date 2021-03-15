@@ -62,12 +62,14 @@ def login(usernameArg, passwordArg):
     # print("Waiting for login...")
     time.sleep(5)
 
+
 ## @brief Expands the shadow element in the given website
 # @param element: Element from the HTML of the website
 # @return shadow_root: The shadow root expanded for the given element
 def expand_shadow_element(element):
     shadow_root = driver.execute_script("return arguments[0].shadowRoot", element)
     return shadow_root
+
 
 ## @brief Adds a filter to collect only current courses
 # @param shadow_root: The shadow root that inherits all this information
@@ -90,6 +92,7 @@ def filterCourses(shadow_root):
 
     # print("Reached current semester...")
     return panelID
+
 
 ## @brief Collects the class names and urls given a specific panelID
 # @param shadow_root: The shadow root that inherits all this information
@@ -117,6 +120,7 @@ def getClasses(shadow_root, panelID):
     # print("Obtained class information...")
     return class_urls, class_names
 
+
 ## @brief Collects due dates of assignments
 # @param due_date_elements: Element containing the information
 # @return date_array: A list of due dates
@@ -129,6 +133,7 @@ def getAssignmentDueDates(due_date_elements):
         except:
             date_array.append(None)
     return date_array
+
 
 ## @brief Collects completion statuses for assignments
 # @param completion_status_elements: Element containing all the information
@@ -151,6 +156,7 @@ def getAssignmentCompletionStatus(completion_status_elements):
                 completion_status_array.append(None)
     return completion_status_array
 
+
 ## @brief Collects the names of each assignment
 # @param assignment_folder_elements: Element containing all the information
 # @return assignment_names_array: List of assignment names
@@ -172,6 +178,7 @@ def getAssignmentFolderNames(assignment_folder_elements):
                 assignment_names_array.append(None)
 
     return assignment_names_array
+
 
 ## @brief Collects all information for assignments
 # @param class_names: List of names of each class
@@ -209,6 +216,7 @@ def getAssignmentInformation(class_names, class_urls):
 
     return assignment_json
 
+
 ## @brief Collects all information for quizzes
 # @param class_names: List of names of each class
 # @param class_urls: List of urls of each class
@@ -241,6 +249,7 @@ def getQuizInformation(class_names, class_urls):
 
     return quiz_json
 
+
 ## @brief Collects names fo each quiz
 # @param quiz_folder_elements: Element containing all the information
 # @return quiz_names_array: List of quiz names
@@ -250,6 +259,7 @@ def getQuizFolderNames(quiz_folder_elements):
         quiz_name = quiz_folder_elements[i].text
         quiz_names_array.append(quiz_name)
     return quiz_names_array
+
 
 ## @brief Collects due dates for each quiz
 # @param due_date_class: Element containing all the information
@@ -267,6 +277,7 @@ def getQuizDueDates(due_date_class):
         date_array.append(quiz_date)
     return date_array
 
+
 ## @brief Collects completion statuses for each quiz
 # @param completion_status_elements: Element containing all the information
 # @return completion_status_array: List containing all the completion statuses
@@ -278,6 +289,7 @@ def getQuizCompletionStatus(completion_status_elements):
             completion_status = None
         completion_status_array.append(completion_status)
     return completion_status_array
+
 
 ## @brief Filter assignment information for not done and valid assignments
 # @param assignment_data: Dictionary containing assignment data
@@ -322,6 +334,7 @@ def filterAssignmentInformation(assignment_data):
     )
     return assignment_data_filtered
 
+
 ## @brief Filter quiz information for not done and valid quizzes
 # @param quiz_data: Dictionary containing quiz data
 # @return quiz_data_filtered: Dictionary containing filtered quiz data
@@ -360,6 +373,7 @@ def filterQuizInformation(quiz_data):
 
     return quiz_data_filtered
 
+
 ## @brief A dictionary for a To-Do Item
 # @param item_name: name of each item
 # @param item_due_date: due date of each item
@@ -376,6 +390,7 @@ def TodoItem(item_name, item_due_date, item_completion_status):
         "isComplete": item_completion_status,
     }
 
+
 ## @brief A dictionary for the To-Do List
 # @param class_name: Name of each class
 # @param todo_items: list of To-Do items
@@ -388,6 +403,7 @@ def TodoList(class_name, todo_items):
         "creationDate": "",
         "todoItemsCollection": todo_items,
     }
+
 
 ## @brief Creates a dictionary
 # @param item_names: list of names of each item
@@ -416,6 +432,7 @@ def jsonify(
         },
     }
 
+
 ## @brief Takes the data from a dictionary and creates another dictionary with the information changed
 # @param data: Dictionary of data for each assignments or quizzes
 # @return todo_items: Dictionary of To-Do Items
@@ -427,6 +444,7 @@ def createTodoItems(data):
         todo_item = TodoItem(item_names[i], item_due_dates[i], False)
         todo_items.append(todo_item)
     return todo_items
+
 
 ## @brief Main function runs the code
 def main():
@@ -447,7 +465,7 @@ def main():
     class_urls, class_names = getClasses(shadow_root2, panelID)
 
     user_data = {
-        "user": {"username": username, "password": password},
+        "user": {"username": "", "password": ""},
         "data": {"TodoList": []},
     }
 
@@ -492,6 +510,7 @@ def main():
         user_data["data"]["TodoList"].append(data[i])
         # print(f"Retrieved all quiz information for {class_names[i]}...")
 
+    print(user_data)
     with open("data.json", "w") as outfile:
         json.dump(user_data, outfile)
 
