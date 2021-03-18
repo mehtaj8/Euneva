@@ -1,0 +1,402 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{multirow}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Module Interface Specification\\Euneva}
+
+\author{Team 9, Euneva
+		\\ Mehta, Jash - mehtaj8
+		\\ Sharma, Aditya - shara24
+		\\ Ren, Zackary - renx11
+}
+
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+17/03/2021 & 1.0 & Initial version of Module Interface Specification\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{MIS of GUI Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Program}
+\begin{tabular}[pos]{|c|c|c|c|}
+    \hline
+    \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+    Constructor & - & GUI & -\\ \hline
+\end{tabular}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Types}
+None
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not Applicable
+\subsubsection{Environment Variables}
+GUI
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Program Semantics}
+Constructor():\\
+
+    Input: None\\
+
+    Transition: None\\
+
+    Output: GUI of To-do list app\\
+
+    Exception: None\\
+
+\newpage
+
+
+
+
+\section{MIS of Login Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Program}
+\begin{tabular}[pos]{|c|c|c|c|}
+    \hline
+    \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+    Login & usernameArg, passwordArg & - & InvalidLoginException \\ \hline
+\end{tabular}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Types}
+None
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not Applicable
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+A valid MACID and password will be entered as usernameArg and passwordArg
+
+\subsubsection{Access Program Semantics}
+login(usernameArg, passwordArg):\\
+
+    Input: usernameArg, passwordArg\\
+
+    Transition: Submits entered information\\
+
+    Output: None\\
+
+    Exception: InvalidLoginException if usernameArg or passwordArg is not a valid MACID or password\\
+
+
+\newpage
+
+
+
+
+\section{MIS of Filter Courses Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Program}
+\begin{tabular}[pos]{|c|c|c|c|}
+    \hline
+    \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+    filterCourses & shadowRoot, panelId & - & InvalidLoginException \\ \hline
+\end{tabular}
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Types}
+None
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not Applicable
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Program Semantics}
+filterCourses(shadowRoot):\\
+    
+    Input: shadowRoot: CSS element\\
+
+    Transition: Filters courses for current semester\\
+    
+    Output: panelID: String\\
+
+    Exception: None\\
+
+
+\newpage
+
+
+
+
+\section{MIS of AssignmentInformation Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Program}
+\begin{tabular}[pos]{|c|c|c|c|}
+    \hline
+    \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+    getAssignmentInformation & classNames, classUrls & assignmentJson & -\\ \hline
+    getClasses & shadowRoot, panelID & classUrls, classNames & -\\ \hline
+    getAssignementDueDates & dueDateElements & dateArray & - \\ \hline
+    getAssignmentCompletionStatus & completionStatusElements & completionStatusArray & - \\ \hline
+    getAssignmentFolderNames & assignementFolderElements & assignementNamesArray & - \\ \hline
+\end{tabular}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Types}
+None
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not Applicable
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Program Semantics}
+getAssignmentInformation(classNames, classUrls):\\
+
+    Input: classNames, classUrls: String arrays\\
+
+    Transition: Collects and returns all assignment information in a dictionary\\
+
+    Output: assignmentJson: dictionary\\
+
+    Exception: None\\
+\\
+\\
+getClasses(shawdowRoot, panelID):\\
+
+    Input: shadowRoot, panelID: CSS element, String\\
+
+    Transition: Obtains all classUrls and classNames\\
+
+    Output: classUrls, classNames: String arrays\\
+
+    Exception: None\\
+\\
+\\
+getAssignmentDueDates(dueDateElements):\\
+
+    Input: dueDateElements: CSS elements\\
+
+    Transition: Collects assignment due dates for every class\\
+
+    Output: dateArray: String array\\
+
+    Exception: None\\
+\\
+\\
+getAssignmentCompletionStatus(completionStatusElements):\\
+
+    Input: completionStatusElements: CSS elements\\
+
+    Transition: Collects assignment completion status for every class\\
+
+    Output: completionStatusArray: String array\\
+
+    Exception: None\\
+\\
+\\
+getAssignmentFolderNames(assignementFolderElements):\\
+
+    Input: assignementFolderElements: CSS elements\\
+
+    Transition: Collects assignment folder names for every class\\
+
+    Output: assignmentNamesArray: String array\\
+    
+    Exception: None\\
+
+
+
+\newpage
+
+
+
+
+\section{MIS of QuizInformation Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Program}
+\begin{tabular}[pos]{|c|c|c|c|}
+    \hline
+    \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+    getQuizInformation & classNames, classUrls & quizJson & - \\ \hline
+    getQuizFolderNames & quizFolderElements & quizNamesArray & - \\ \hline
+    getQuizDueDates & dueDateClass & dateArray & - \\ \hline
+    getQuizCompletionStatus & completionStatusElements & completionStatusArray & - \\ \hline
+    getClasses & shadowRoot, panelID & classUrls, classNames & - \\ \hline
+    \end{tabular}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Types}
+None
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not Applicable
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Program Semantics}
+getAssignmentInformation(classNames, classUrls):\\
+
+    Input: classNames, classUrls: String arrays\\
+
+    Transition: Collects and returns all assignment information in a dictionary\\
+
+    Output: assignmentJson: dictionary\\
+
+    Exception: None\\
+\\
+\\
+getQuizInformation(classNames, classUrls):\\
+
+    Input: classNames, classUrls: String arrays\\
+
+    Transition: Collects and returns all quiz information in a dictionary\\
+
+    Output: quizJson: dictionary\\
+
+    Exception: None\\
+\\
+\\
+getQuizFolderNames(quizFolderElements):\\
+    
+    Input: quizFolderElements: CSS elements\\
+    
+    Transition: Collects quiz folder names for every class\\
+    
+    Output: quizNamesArray: String array\\
+    
+    Exception: None\\
+\\
+\\
+getQuizDueDates(dueDateClass):\\
+    
+    Input: dueDateClass: CSS elements\\
+    
+    Transition: Collects quiz due dates for every class\\
+    
+    Output: dateArray: String array\\
+    
+    Exception: None\\
+\\
+\\
+getQuizCompletionStatus(completionStatusElements):\\
+    
+    Input: completionStatusElements: CSS elements\\
+    
+    Transition: Collects quiz completion status for every class\\
+    
+    Output: completionStatusArray: String array\\
+    
+    Exception: None\\
+\\
+\\
+getClasses(shadowRoot, panelID):\\
+    
+    Input: shadowRoot, panelID: CSS element, String\\
+    
+    Transition: Obtains all classUrls and classNames\\
+    
+    Output: classUrls, classNames: String arrays\\
+    
+    Exception: None\\
+\\
+\\
+
+\newpage
+
+
+
+
+
+\section{MIS of Filtering Module}
+\subsection{Interface Syntax}
+\subsubsection{Exported Access Program}
+\begin{tabular}[pos]{|c|c|c|c|}
+    \hline
+    \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+    filterAssignmentInformation & assignmentData & assignmentDataFiltered & - \\ \hline
+    filterQuizInformation & quizData & quizDataFiltered & - \\ \hline
+    main & - & - & - \\ \hline
+    \end{tabular}
+
+\subsubsection{Exported Constants}
+None
+\subsubsection{Exported Types}
+None
+\subsection{Interface Semantics}
+\subsubsection{State Variables}
+Not Applicable
+\subsubsection{Environment Variables}
+None
+\subsubsection{Assumptions}
+None
+\subsubsection{Access Program Semantics}
+filterAssignmentInformation(assignmentData):\\
+    
+    Input: assignmentData: dictionary\\
+    
+    Transition: Filters all assignment information and returns a dictionary\\
+    
+    Output: assignmentDataFiltered: dictionary\\
+    
+    Exception: None\\
+\\
+\\
+
+filterQuizInformation(quizData):\\
+
+    Input: quizData: dictionary\\
+
+    Transition: Filters all quiz information and returns a dictionary\\
+
+    Output: quizDataFiltered: dictionary\\
+
+    Exception: None\\
+\\
+\\
+
+main():\\
+
+    Input: None\\
+
+    Transition: Uses other modules to combine and filter all information.\\
+
+    Output: None\\
+
+    Exception: None\\
+\\
+\\
+
+\end{document}
