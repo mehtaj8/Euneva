@@ -44,9 +44,17 @@
 \end{tabularx}
 \end{table}
 
+\pagenumbering{arabic}
 \newpage
 
-\pagenumbering{arabic}
+\section{Introduction}
+This project involves a lot of front-end web development. As a result,
+most of the components cannot be effectively described as part of the MIS format.
+However, the back-end components of the software, the components that involve
+more logic and have more engineering based design desicions have been the main
+focus of this MIS.
+
+\newpage
 
 \section{MIS of GUI Module}
 \subsection{Interface Syntax}
@@ -68,18 +76,17 @@ GUI
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Program Semantics}
-Constructor():\\
+Constructor():
 
-    Input: None\\
+    Input: None
 
-    Transition: None\\
+    Transition: None
 
-    Output: GUI of To-do list app\\
+    Output: GUI of To-do list app
 
-    Exception: None\\
+    Exception: None
 
 \newpage
-
 
 
 
@@ -104,15 +111,15 @@ None
 A valid MACID and password will be entered as usernameArg and passwordArg
 
 \subsubsection{Access Program Semantics}
-login(usernameArg, passwordArg):\\
+login(usernameArg, passwordArg):
 
-    Input: usernameArg, passwordArg\\
+    Input: usernameArg, passwordArg
 
-    Transition: Submits entered information\\
+    Transition: Submits entered information
 
-    Output: None\\
+    Output: None
 
-    Exception: InvalidLoginException if usernameArg or passwordArg is not a valid MACID or password\\
+    Exception: InvalidLoginException if usernameArg or passwordArg is not a valid MACID or password
 
 
 \newpage
@@ -120,7 +127,7 @@ login(usernameArg, passwordArg):\\
 
 
 
-\section{MIS of Filter Courses Module}
+\section{MIS of FilterCourses Module}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|c|c|c|c|}
@@ -140,33 +147,30 @@ None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Program Semantics}
-filterCourses(shadowRoot):\\
+filterCourses(shadowRoot):
     
-    Input: shadowRoot: CSS element\\
+    Input: shadowRoot: CSS element
 
-    Transition: Filters courses for current semester\\
+    Transition: Filters courses for current semester
     
-    Output: panelID: String\\
+    Output: panelID: String
 
-    Exception: None\\
+    Exception: None
 
 
 \newpage
 
-
-
-
 \section{MIS of AssignmentInformation Module}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
-\begin{tabular}[pos]{|c|c|c|c|}
+\begin{tabular}[pos]{|p{5.4cm}|p{4.1cm}|p{3.7cm}|{c}|}
     \hline
     \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
     getAssignmentInformation & classNames, classUrls & assignmentJson & -\\ \hline
     getClasses & shadowRoot, panelID & classUrls, classNames & -\\ \hline
-    getAssignementDueDates & dueDateElements & dateArray & - \\ \hline
-    getAssignmentCompletionStatus & completionStatusElements & completionStatusArray & - \\ \hline
-    getAssignmentFolderNames & assignementFolderElements & assignementNamesArray & - \\ \hline
+    getAssignmentDueDates & dueDateElems & dateArr & - \\ \hline
+    getAssignmentCompleteStatus & completionStatusElems & completionStatusArr & - \\ \hline
+    getAssignmentFolderNames & assignmentFolderElems & assignmentNamesArr & - \\ \hline
 \end{tabular}
 
 \subsubsection{Exported Constants}
@@ -181,59 +185,59 @@ None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Program Semantics}
-getAssignmentInformation(classNames, classUrls):\\
+getAssignmentInformation(classNames, classUrls):
 
-    Input: classNames, classUrls: String arrays\\
+    Input: classNames, classUrls: String arrays
 
-    Transition: Collects and returns all assignment information in a dictionary\\
+    Transition: Collects and returns all assignment information in a dictionary
 
-    Output: assignmentJson: dictionary\\
+    Output: assignmentJson: dictionary
 
-    Exception: None\\
+    Exception: None
 \\
 \\
-getClasses(shawdowRoot, panelID):\\
+getClasses(shawdowRoot, panelID):
 
-    Input: shadowRoot, panelID: CSS element, String\\
+    Input: shadowRoot, panelID: CSS element, String
 
-    Transition: Obtains all classUrls and classNames\\
+    Transition: Obtains all classUrls and classNames
 
-    Output: classUrls, classNames: String arrays\\
+    Output: classUrls, classNames: String arrays
 
-    Exception: None\\
+    Exception: None
 \\
 \\
-getAssignmentDueDates(dueDateElements):\\
+getAssignmentDueDates(dueDateElems):
 
-    Input: dueDateElements: CSS elements\\
+    Input: dueDateElems: CSS elements
 
-    Transition: Collects assignment due dates for every class\\
+    Transition: Collects assignment due dates for every class
 
-    Output: dateArray: String array\\
+    Output: dateArr: String array
 
-    Exception: None\\
+    Exception: None
 \\
 \\
-getAssignmentCompletionStatus(completionStatusElements):\\
+getAssignmentCompleteStatus(completionStatusElems):
 
-    Input: completionStatusElements: CSS elements\\
+    Input: completionStatusElems: CSS elements
 
-    Transition: Collects assignment completion status for every class\\
+    Transition: Collects assignment completion status for every class
 
-    Output: completionStatusArray: String array\\
+    Output: completionStatusArr: String array
 
-    Exception: None\\
+    Exception: None
 \\
 \\
-getAssignmentFolderNames(assignementFolderElements):\\
+getAssignmentFolderNames(assignmentFolderElems):
 
-    Input: assignementFolderElements: CSS elements\\
+    Input: assignmentFolderElems: CSS elements
 
-    Transition: Collects assignment folder names for every class\\
+    Transition: Collects assignment folder names for every class
 
-    Output: assignmentNamesArray: String array\\
+    Output: assignmentNamesArr: String array
     
-    Exception: None\\
+    Exception: None
 
 
 
@@ -249,9 +253,9 @@ getAssignmentFolderNames(assignementFolderElements):\\
     \hline
     \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
     getQuizInformation & classNames, classUrls & quizJson & - \\ \hline
-    getQuizFolderNames & quizFolderElements & quizNamesArray & - \\ \hline
-    getQuizDueDates & dueDateClass & dateArray & - \\ \hline
-    getQuizCompletionStatus & completionStatusElements & completionStatusArray & - \\ \hline
+    getQuizFolderNames & quizFolderElems & quizNamesArr & - \\ \hline
+    getQuizDueDates & dueDateClass & dateArr & - \\ \hline
+    getQuizCompleteStatus & completionStatusElems & completionStatusArr & - \\ \hline
     getClasses & shadowRoot, panelID & classUrls, classNames & - \\ \hline
     \end{tabular}
 
@@ -267,72 +271,73 @@ None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Program Semantics}
-getAssignmentInformation(classNames, classUrls):\\
+getAssignmentInformation(classNames, classUrls):
 
-    Input: classNames, classUrls: String arrays\\
+    Input: classNames, classUrls: String arrays
 
-    Transition: Collects and returns all assignment information in a dictionary\\
+    Transition: Collects and returns all assignment information in a dictionary
 
-    Output: assignmentJson: dictionary\\
+    Output: assignmentJson: dictionary
 
-    Exception: None\\
+    Exception: None
 \\
 \\
-getQuizInformation(classNames, classUrls):\\
+getQuizInformation(classNames, classUrls):
 
-    Input: classNames, classUrls: String arrays\\
+    Input: classNames, classUrls: String arrays
 
-    Transition: Collects and returns all quiz information in a dictionary\\
+    Transition: Collects and returns all quiz information in a dictionary
 
-    Output: quizJson: dictionary\\
+    Output: quizJson: dictionary
 
-    Exception: None\\
+    Exception: None
 \\
 \\
-getQuizFolderNames(quizFolderElements):\\
+getQuizFolderNames(quizFolderElems):
     
-    Input: quizFolderElements: CSS elements\\
+    Input: quizFolderElems: CSS elements
     
-    Transition: Collects quiz folder names for every class\\
+    Transition: Collects quiz folder names for every class
     
-    Output: quizNamesArray: String array\\
+    Output: quizNamesArr: String array
     
-    Exception: None\\
+    Exception: None
 \\
 \\
-getQuizDueDates(dueDateClass):\\
+getQuizDueDates(dueDateClass):
     
-    Input: dueDateClass: CSS elements\\
+    Input: dueDateClass: CSS elements
     
-    Transition: Collects quiz due dates for every class\\
+    Transition: Collects quiz due dates for every class
     
-    Output: dateArray: String array\\
+    Output: dateArr: String array
     
-    Exception: None\\
+    Exception: None
 \\
 \\
-getQuizCompletionStatus(completionStatusElements):\\
+getQuizCompleteStatus(completionStatusElems):
     
-    Input: completionStatusElements: CSS elements\\
+    Input: completionStatusElems: CSS elements
     
-    Transition: Collects quiz completion status for every class\\
+    Transition: Collects quiz completion status for every class
     
-    Output: completionStatusArray: String array\\
+    Output: completionStatusArr: String array
     
-    Exception: None\\
+    Exception: None
 \\
 \\
-getClasses(shadowRoot, panelID):\\
+getClasses(shadowRoot, panelID):
     
-    Input: shadowRoot, panelID: CSS element, String\\
+    Input: shadowRoot, panelID: CSS element, String
     
-    Transition: Obtains all classUrls and classNames\\
+    Transition: Obtains all classUrls and classNames
     
-    Output: classUrls, classNames: String arrays\\
+    Output: classUrls, classNames: String arrays
     
-    Exception: None\\
+    Exception: None
 \\
 \\
+
 
 \newpage
 
@@ -363,40 +368,39 @@ None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Program Semantics}
-filterAssignmentInformation(assignmentData):\\
+filterAssignmentInformation(assignmentData):
     
-    Input: assignmentData: dictionary\\
+    Input: assignmentData: dictionary
     
-    Transition: Filters all assignment information and returns a dictionary\\
+    Transition: Filters all assignment information and returns a dictionary
     
-    Output: assignmentDataFiltered: dictionary\\
+    Output: assignmentDataFiltered: dictionary
     
-    Exception: None\\
+    Exception: None
+\\
+\\
+filterQuizInformation(quizData):
+
+    Input: quizData: dictionary
+
+    Transition: Filters all quiz information and returns a dictionary
+
+    Output: quizDataFiltered: dictionary
+
+    Exception: None
+\\
+\\
+main():
+
+    Input: None
+
+    Transition: Uses other modules to combine and filter all information.
+
+    Output: None
+
+    Exception: None
 \\
 \\
 
-filterQuizInformation(quizData):\\
-
-    Input: quizData: dictionary\\
-
-    Transition: Filters all quiz information and returns a dictionary\\
-
-    Output: quizDataFiltered: dictionary\\
-
-    Exception: None\\
-\\
-\\
-
-main():\\
-
-    Input: None\\
-
-    Transition: Uses other modules to combine and filter all information.\\
-
-    Output: None\\
-
-    Exception: None\\
-\\
-\\
 
 \end{document}
