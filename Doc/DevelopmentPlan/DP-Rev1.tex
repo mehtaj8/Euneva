@@ -6,7 +6,13 @@
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amssymb}
-
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[normalem]{ulem}
 \usepackage{geometry}
 
 \usepackage{hyperref}
@@ -150,7 +156,7 @@ The second part of implementation that might be difficult will be deploying the 
 
 There are no libraries that are particularly difficult to install. However, this does not mean that the libraries will be easy to use because we do not have experience with some of them (Flask). By the same token, we plan on leveraging existing documentation and publicly available resources (udemy, stackoverflow and github issues) to ensure that we understand the library and overcome any issues that arise from its use within an appropriate timeframe.\\
 
-Portability will always be a concern with any software product. However, we plan on ensuring that our software product is portable via the choice of the technologies that we are using. By using React-Native, we are able to cater to customers in both iOS and Android markets. Furthermore, by leveraging Docker, we are able to containerize the application and ensure that it can be run from any environment for development. This significantly improves portability of the software product after release and during development as well.\\
+Portability will always be a concern with any software product. However, we plan on ensuring that our software product is portable via the choice of the technologies that we are using. By using React-Native, we are able to cater to customers \sout{in both iOS and Android markets} \textcolor{red}{who have devices capable of connecting to the internet as well as being able to open a web application}. Furthermore, by leveraging Docker, we are able to containerize the application and ensure that it can be run from any environment for development. This significantly improves portability of the software product after release and during development as well.\\
 
 \newgeometry{headsep = {50pt}}
 \newpage
@@ -163,9 +169,9 @@ Portability will always be a concern with any software product. However, we plan
 \item \it Docker
 \end{itemize}
 
-As mentioned in the Project Statement, our software product is a mobile application intended for both iOS and Android devices. As a result, we need to leverage a technology that will enable us to produce and deliver a high quality product for both mobile environments. \\
+As mentioned in the Project Statement, our software product is a \sout{mobile} \textcolor{red}{web} application intended for \sout{both iOS and Android} \textcolor{red}{all} devices. As a result, we need to leverage a technology that will enable us to produce and deliver a high quality product for \sout{both mobile} \textcolor{red}{all} environments. \\
 
-Normally, in order to produce a product for an iOS and Android device, we would need to leverage {\it Swift} and {\it Java} respectively. This would result in either 2 separate code-bases or 1 massive code-base. This would introduce an extra-layer of complexity to the project. Therefore, we have decided to use a cross-platform technology known as {\it React-Native}. This programming language/framework will allow us to develop for both platforms through a singular codebase. \\
+\sout{Normally, in order to produce a product for an iOS and Android device, we would need to leverage {\it Swift} and {\it Java} respectively. This would result in either 2 separate code-bases or 1 massive code-base. This would introduce an extra-layer of complexity to the project. Therefore,} We have decided to use a cross-platform technology known as {\it React-Native}. This programming language/framework will allow us to develop for \sout{both} \textcolor{red}{all} platforms through a singular codebase. \\
 
 We will also be leveraging {\it Beautiful-Soup} \& {\it Selenium} to perform the web-scraping. The backend logic will be hosted by an API and this API will be created via {\it Flask}. \\
 
@@ -226,4 +232,12 @@ To keep the project simple, we will not be using a state-management system such 
 \newgeometry{headsep = {50pt}}
 \newpage
 \subsection*{Project Review}
+\color{red}
+
+Throughout the duration of this course, Group-9 has implemented the Avenue to Learn scraping capabilities and improved the open source To-Do list. The back-end scraping logic was developed in {\it Python}, whilst the improvements to the front-end were done through {\it React-Native}. The improvements to the GUI include adding an Avenue scraping button, and adding dates and titles to each To-Do item.\\
+
+The experiences that went well for this project include being able to learn the project development process in a group environment. We were able to learn about the different types of documentation, from the test plan to the MIS.\\
+
+The experiences that did not go so well was during the development process where the team changed from developing on a mobile application to developing on a web application. On future projects, we would move to using an agile approach to this project instead of a waterfall approach. Using the agile methodology, group meetings would take place everyday for short durations, and documentation, implementation and testing would take place throughout the entire development process instead of near the end.
+
 \end{document}  
