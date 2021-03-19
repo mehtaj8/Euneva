@@ -109,7 +109,7 @@ This section presents an overview of the module design. Table 1 describes the mo
         & Filtering Module\\
         \midrule
         
-        \multirow{1} {0.3\textwidth}{Software Decision Module} & {Filter Courses Module}\\
+        \multirow{1} {0.35\textwidth}{Software Decision Module} & {Filter Courses Module}\\
         \bottomrule
         
     \end{tabular}
@@ -262,5 +262,19 @@ This section shows two traceability matrices. Between the modules and the requir
 \end{table}
 
 \section{User Hierarchy Between Modules}
+As shown by \ref{hierarchyFig}, the graph representing the relationship
+between the modules is a directed acyclic graph (DAG). 
+The modules have purposely been designed to mimic a tree due to the way
+how technologies like React work when rendering information. Simplicity was 
+key when developing this product, so we followed a pipelined approach which is why
+the module hierarchy is more tree-like rather than graph-like.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{hierarchy.jpg}
+    \caption{Module Use Hierarchy}
+    \label{hierarchyFig}
+\end{figure}
+    
 
 \end{document}
