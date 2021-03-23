@@ -124,6 +124,7 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
               _listId={todoItem._listId}
               title={todoItem.title}
               isComplete={todoItem.isComplete}
+              dueDate={todoItem.dueDate}
               updateTodoItemTitleHandler={updateTodoItemTitleHandler}
               updateTodoItemDateHandler={updateTodoItemDateHandler}
               updateTodoItemCompletionStatusHandler={updateTodoItemCompletionStatusHandler}

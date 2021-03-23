@@ -23,7 +23,7 @@ export const ItemSchema: Schema = new Schema({
         default: getTodaysDate()
     },
     dueDate: {
-        type: Date
+        type: String
     },
     isComplete: {
         type: Boolean,
