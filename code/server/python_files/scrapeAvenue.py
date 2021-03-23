@@ -62,7 +62,6 @@ def login(usernameArg, passwordArg):
     # print("Waiting for login...")
     time.sleep(5)
 
-
 ## @brief Expands the shadow element in the given website
 # @param element: Element from the HTML of the website
 # @return shadow_root: The shadow root expanded for the given element
@@ -453,7 +452,10 @@ def main():
 
     driver.get(avenueWebsiteURL)
     login(username, password)
-    root1 = driver.find_element_by_tag_name("d2l-my-courses")
+    try:
+        root1 = driver.find_element_by_tag_name("d2l-my-courses")
+    except:
+       raise Exception("Invalid Login")
     shadow_root1 = expand_shadow_element(root1)
 
     root2 = shadow_root1.find_element_by_tag_name("d2l-my-courses-container")
