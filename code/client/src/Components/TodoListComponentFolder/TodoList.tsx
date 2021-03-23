@@ -92,24 +92,25 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
   return (
     <div className='root-todolist-container'>
       <div className='todolist-buttons-container'>
-        <form>
-          <input
-            type='text'
-            id='username'
-            name='username'
-            className='login-field'
-            placeholder='MAC ID'
-            onChange={event => setUsername(event.target.value)}></input>
-          <input
-            type='password'
-            id='password'
-            className='login-field'
-            placeholder='Password'
-            onChange={event => setPassword(event.target.value)}></input>
-          <button type='submit' className='add-todoitem-button'>
-            Connect to Avenue
-          </button>
-        </form>
+        <input
+          type='text'
+          id='username'
+          name='username'
+          className='login-field'
+          placeholder='MAC ID'
+          onChange={event => setUsername(event.target.value)}></input>
+        <input
+          type='password'
+          id='password'
+          className='login-field'
+          placeholder='Password'
+          onChange={event => setPassword(event.target.value)}></input>
+        <button
+          type='submit'
+          className='add-todoitem-button'
+          onClick={() => getUserTodoListRequest(username, password)}>
+          Connect to Avenue
+        </button>
         {renderAddItemButton()}
         <button className={'add-todoitem-button'} onClick={props.createTodoListHandler}>
           Create New List
@@ -181,17 +182,11 @@ const createTodoItemRequest = async (_listId: string) => {
 };
 
 const getUserTodoListRequest = async (_username: string, _password: string) => {
-  const endpoint = API + `user/`;
   try {
-    const response: Response = await fetch(endpoint, {
-      method: 'POST',
-      body: JSON.stringify({
-        _username: _password,
-        username: ' ',
-        password: ' ',
-      }),
-    });
+    const endpoint = `${API}user/?username=${_username}&password=${_password}`;
+    const response: Response = await fetch(endpoint);
     const { data } = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
