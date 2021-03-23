@@ -94,14 +94,3 @@
   align-items: flex-start;
   overflow-y: scroll;
 }
-
-.login-field {
-  padding-right: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  border: none;
-  width: 20%;
-  color: white;
-  background-color: var(--light-grey);
-  height: 25px;
-}
