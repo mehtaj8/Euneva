@@ -5,7 +5,7 @@ import './TodoItem.css';
 
 export const TodoItem: FunctionComponent<ITodoItemProps> = (props: ITodoItemProps) => {
   const [todoItemTitleState, setTodoItemTitleState] = useState(props.title);
-  const [todoItemDateState, setTodoItemDateState] = useState(props.title);
+  const [todoItemDateState, setTodoItemDateState] = useState(props.dueDate);
 
   return (
     <div className='todoitem-container'>

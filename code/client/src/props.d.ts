@@ -6,11 +6,13 @@ export interface ITodoItemProps {
   _listId: string;
   title: string;
   isComplete: boolean;
+  dueDate: string;
   updateTodoItemTitleHandler: (
     event: React.KeyboardEvent<HTMLInputElement>,
     updatedTodoItemId: string,
     updatedTodoItemTitle: string,
   ) => void;
+
   updateTodoItemCompletionStatusHandler: (updatedTodoItemId: string) => void;
 
   updateTodoItemDateHandler: (
