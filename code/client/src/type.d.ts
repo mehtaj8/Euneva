@@ -4,7 +4,7 @@ export type TodoItemType = {
   title: string;
   description?: string;
   creationDate: string;
-  dueDate: string;
+  dueDate?: string;
   isComplete: boolean;
 };
 

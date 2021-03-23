@@ -29,25 +29,6 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
     }
   };
 
-  const updateTodoItemDateHandler = async (
-    event: React.KeyboardEvent<HTMLInputElement>,
-    updatedTodoItemId: string,
-    updatedTodoItemDate: string,
-  ) => {
-    if (event.key === 'Enter') {
-      // API Request to update TodoItem in DB goes HERE
-      setTodoItemsCollection(
-        todoItemsCollection.map(todoItem => {
-          if (todoItem._id === updatedTodoItemId) {
-            todoItem.dueDate = updatedTodoItemDate;
-          }
-          return todoItem;
-        }),
-      );
-      await updateTodoItemRequest(updatedTodoItemId, { dueDate: updatedTodoItemDate });
-    }
-  };
-
   const updateTodoItemCompletionStatusHandler = async (updatedTodoItemId: string) => {
     // API Request to update TodoItem in DB goes HERE
     setTodoItemsCollection(
@@ -143,9 +124,7 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
               _listId={todoItem._listId}
               title={todoItem.title}
               isComplete={todoItem.isComplete}
-              dueDate={todoItem.dueDate}
               updateTodoItemTitleHandler={updateTodoItemTitleHandler}
-              updateTodoItemDateHandler={updateTodoItemDateHandler}
               updateTodoItemCompletionStatusHandler={updateTodoItemCompletionStatusHandler}
             />
           );
