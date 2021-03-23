@@ -8,6 +8,101 @@
                 "description": "",
                 "creationDate": "",
                 "todoItemsCollection": []
+            },
+            {
+                "_id": "",
+                "title": "HTHSCI 3G03",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Diagnostic Test Validity",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 27, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Systematic Reviews",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 10, 2021",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "IBEHS 3P04",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "DS Team 35: Design Project M7-Friday Section",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 3, 2021 ",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "SFWRENG 2GA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Assignment 3",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 22, 2021",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "CHEM 1AA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Exp 9 FlowChart - Synthesis of Aspirin",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 26, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 5",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Mar 25, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 6",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 8, 2021",
+                        "isComplete": false
+                    }
+                ]
             }
         ]
     }
