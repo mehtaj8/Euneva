@@ -43,7 +43,7 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
           return todoItem;
         }),
       );
-      await updateTodoItemRequest(updatedTodoItemId, { title: updatedTodoItemDate });
+      await updateTodoItemRequest(updatedTodoItemId, { dueDate: updatedTodoItemDate });
     }
   };
 
