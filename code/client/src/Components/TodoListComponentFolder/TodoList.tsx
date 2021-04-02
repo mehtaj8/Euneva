@@ -7,6 +7,8 @@ import './TodoList.css';
 
 export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProps) => {
   const [todoItemsCollection, setTodoItemsCollection] = useState(props.todoItemsCollection);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   // Function to update the TodoItem information in local state & database
   const updateTodoItemTitleHandler = async (
@@ -25,25 +27,6 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
         }),
       );
       await updateTodoItemRequest(updatedTodoItemId, { title: updatedTodoItemTitle });
-    }
-  };
-
-  const updateTodoItemDateHandler = async (
-    event: React.KeyboardEvent<HTMLInputElement>,
-    updatedTodoItemId: string,
-    updatedTodoItemDate: string,
-  ) => {
-    if (event.key === 'Enter') {
-      // API Request to update TodoItem in DB goes HERE
-      setTodoItemsCollection(
-        todoItemsCollection.map(todoItem => {
-          if (todoItem._id === updatedTodoItemId) {
-            todoItem.dueDate = updatedTodoItemDate;
-          }
-          return todoItem;
-        }),
-      );
-      await updateTodoItemRequest(updatedTodoItemId, { dueDate: updatedTodoItemDate });
     }
   };
 
@@ -109,6 +92,25 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
   return (
     <div className='root-todolist-container'>
       <div className='todolist-buttons-container'>
+        <input
+          type='text'
+          id='username'
+          name='username'
+          className='login-field'
+          placeholder='MAC ID'
+          onChange={event => setUsername(event.target.value)}></input>
+        <input
+          type='password'
+          id='password'
+          className='login-field'
+          placeholder='Password'
+          onChange={event => setPassword(event.target.value)}></input>
+        <button
+          type='submit'
+          className='add-todoitem-button'
+          onClick={() => getUserTodoListRequest(username, password)}>
+          Connect to Avenue
+        </button>
         {renderAddItemButton()}
         <button className={'add-todoitem-button'} onClick={props.createTodoListHandler}>
           Create New List
@@ -124,9 +126,7 @@ export const TodoList: FunctionComponent<ITodoListProps> = (props: ITodoListProp
               _listId={todoItem._listId}
               title={todoItem.title}
               isComplete={todoItem.isComplete}
-              dueDate={todoItem.dueDate}
               updateTodoItemTitleHandler={updateTodoItemTitleHandler}
-              updateTodoItemDateHandler={updateTodoItemDateHandler}
               updateTodoItemCompletionStatusHandler={updateTodoItemCompletionStatusHandler}
             />
           );
@@ -174,6 +174,19 @@ const createTodoItemRequest = async (_listId: string) => {
       }),
     });
     const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+const getUserTodoListRequest = async (_username: string, _password: string) => {
+  try {
+    const endpoint = `${API}user/?username=${_username}&password=${_password}`;
+    const response: Response = await fetch(endpoint);
+    const { data } = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

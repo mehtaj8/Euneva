@@ -37,54 +37,8 @@ export const getAvenueData = () => {
         );
         var stringData = result.toString('utf8');
         stringData.replace(/'/g, '"');
-        const scrapedData: ScrapedData = JSON.parse(stringData);
-        try {
-            for (let i = 0; i < scrapedData.data.TodoList.length; i++) {
-                const todoList = scrapedData.data.TodoList[i];
-                const listModelExists = await ListModel.findOne({
-                    title: `${todoList.title}-macid-password`
-                });
-
-                if (!listModelExists) {
-                    let listModelDocument = await ListModel.create({
-                        title: `${todoList.title}-macid-password`,
-                        description: todoList.description
-                    });
-
-                    for (
-                        let j = 0;
-                        j < todoList.todoItemsCollection.length;
-                        j++
-                    ) {
-                        const todoItem = todoList.todoItemsCollection[j];
-                        const itemModelDocument = await ItemModel.create({
-                            _listId: listModelDocument._id,
-                            title: todoItem.title,
-                            description: todoItem.description,
-                            isComplete: todoItem.isComplete,
-                            dueDate: todoItem.dueDate
-                        });
-                    }
-                } else {
-                    for (
-                        let j = 0;
-                        j < todoList.todoItemsCollection.length;
-                        j++
-                    ) {
-                        const todoItem = todoList.todoItemsCollection[j];
-                        const itemModelDocument = await ItemModel.create({
-                            _listId: listModelExists?._id,
-                            title: todoItem.title,
-                            description: todoItem.description,
-                            isComplete: todoItem.isComplete,
-                            dueDate: todoItem.dueDate
-                        });
-                    }
-                }
-            }
-            return response.status(200).send(scrapedData);
-        } catch (e) {
-            return response.status(400).send(e);
-        }
+        return response.status(200).json({
+            data: JSON.parse(stringData)
+        });
     };
 };

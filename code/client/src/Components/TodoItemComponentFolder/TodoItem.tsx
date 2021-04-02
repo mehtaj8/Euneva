@@ -5,7 +5,6 @@ import './TodoItem.css';
 
 export const TodoItem: FunctionComponent<ITodoItemProps> = (props: ITodoItemProps) => {
   const [todoItemTitleState, setTodoItemTitleState] = useState(props.title);
-  const [todoItemDateState, setTodoItemDateState] = useState(props.dueDate);
 
   return (
     <div className='todoitem-container'>
@@ -27,18 +26,6 @@ export const TodoItem: FunctionComponent<ITodoItemProps> = (props: ITodoItemProp
             setTodoItemTitleState(e.target.value);
           }}
           onKeyPress={e => props.updateTodoItemTitleHandler(e, props._id, todoItemTitleState)}
-        />
-      </div>
-      <div className={'todoitem-information-container'}>
-        <input
-          type={'text'}
-          className={'todoitem-date'}
-          placeholder={'Add Todo Item Date'}
-          value={todoItemDateState}
-          onChange={e => {
-            setTodoItemDateState(e.target.value);
-          }}
-          onKeyPress={e => props.updateTodoItemDateHandler(e, props._id, todoItemDateState)}
         />
       </div>
     </div>
