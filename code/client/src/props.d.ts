@@ -1,6 +1,7 @@
 import { TodoItemType, TodoListType } from './type';
 
 export interface ITodoItemProps {
+  dueDate: string;
   _id: string;
   _listId: string;
   title: string;
@@ -11,6 +12,11 @@ export interface ITodoItemProps {
     updatedTodoItemTitle: string,
   ) => void;
   updateTodoItemCompletionStatusHandler: (updatedTodoItemId: string) => void;
+  updateTodoItemDateHandler: (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    updatedTodoItemId: string,
+    updatedTodoItemDate: string,
+  ) => void;
 }
 
 export interface ITodoListProps {
