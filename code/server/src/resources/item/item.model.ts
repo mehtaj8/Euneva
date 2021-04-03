@@ -11,7 +11,7 @@ export const ItemSchema: Schema = new Schema({
     title: {
         type: String,
         trim: true,
-        maxlength: 30
+        maxlength: 60
     },
     description: {
         type: String,
@@ -23,7 +23,7 @@ export const ItemSchema: Schema = new Schema({
         default: getTodaysDate()
     },
     dueDate: {
-        type: Date
+        type: String
     },
     isComplete: {
         type: Boolean,

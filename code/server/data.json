@@ -18,15 +18,6 @@
                     {
                         "_id": "",
                         "_listId": "",
-                        "title": "Diagnostic Test Validity",
-                        "description": "",
-                        "creationDate": "",
-                        "dueDate": "Mar 27, 2021",
-                        "isComplete": false
-                    },
-                    {
-                        "_id": "",
-                        "_listId": "",
                         "title": "Systematic Reviews",
                         "description": "",
                         "creationDate": "",
@@ -44,10 +35,10 @@
                     {
                         "_id": "",
                         "_listId": "",
-                        "title": "DS Team 35: Design Project M7-Friday Section",
+                        "title": "Assignment 3",
                         "description": "",
                         "creationDate": "",
-                        "dueDate": "Apr 3, 2021 ",
+                        "dueDate": "Apr 6, 2021 ",
                         "isComplete": false
                     }
                 ]
@@ -61,10 +52,10 @@
                     {
                         "_id": "",
                         "_listId": "",
-                        "title": "Assignment 3",
+                        "title": "Assignment 4",
                         "description": "",
                         "creationDate": "",
-                        "dueDate": "Mar 22, 2021",
+                        "dueDate": "Apr 5, 2021 ",
                         "isComplete": false
                     }
                 ]
@@ -78,28 +69,19 @@
                     {
                         "_id": "",
                         "_listId": "",
-                        "title": "Exp 9 FlowChart - Synthesis of Aspirin",
-                        "description": "",
-                        "creationDate": "",
-                        "dueDate": "Mar 26, 2021",
-                        "isComplete": false
-                    },
-                    {
-                        "_id": "",
-                        "_listId": "",
-                        "title": "Quiz 5",
-                        "description": "",
-                        "creationDate": "",
-                        "dueDate": "Mar 25, 2021",
-                        "isComplete": false
-                    },
-                    {
-                        "_id": "",
-                        "_listId": "",
                         "title": "Quiz 6",
                         "description": "",
                         "creationDate": "",
                         "dueDate": "Apr 8, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Respondus Practice Exam - W2021 - Requires Respondus LockDown Browser + Webcam",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 18, 2021",
                         "isComplete": false
                     }
                 ]

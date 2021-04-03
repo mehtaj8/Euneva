@@ -186,7 +186,6 @@ const getUserTodoListRequest = async (_username: string, _password: string) => {
     const endpoint = `${API}user/?username=${_username}&password=${_password}`;
     const response: Response = await fetch(endpoint);
     const { data } = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
