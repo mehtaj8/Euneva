@@ -1,4 +1,30 @@
 import { Request, Response } from 'express';
+import { ItemModel } from '../item/item.model';
+import { ListModel } from '../list/list.model';
+
+type TodoList = {
+    _id: string;
+    title: string;
+    description: string;
+    creationDate: string;
+    todoItemsCollection: {
+        _id: string;
+        _listId: string;
+        title: string;
+        description: string;
+        creationDate: string;
+        dueDate: string;
+        isComplete: boolean;
+    }[];
+};
+
+type ScrapedData = {
+    user: { username: string; password: string };
+    data: {
+        TodoList: TodoList[];
+    };
+};
+// comment
 
 // Activate venv prior to running server
 export const getAvenueData = () => {
