@@ -1,0 +1,91 @@
+{
+    "user": { "username": "", "password": "" },
+    "data": {
+        "TodoList": [
+            {
+                "_id": "",
+                "title": "SFWRENG 3XA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": []
+            },
+            {
+                "_id": "",
+                "title": "HTHSCI 3G03",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Systematic Reviews",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 10, 2021",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "IBEHS 3P04",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Assignment 3",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 6, 2021 ",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "SFWRENG 2GA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Assignment 4",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 5, 2021 ",
+                        "isComplete": false
+                    }
+                ]
+            },
+            {
+                "_id": "",
+                "title": "CHEM 1AA3",
+                "description": "",
+                "creationDate": "",
+                "todoItemsCollection": [
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Quiz 6",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 8, 2021",
+                        "isComplete": false
+                    },
+                    {
+                        "_id": "",
+                        "_listId": "",
+                        "title": "Respondus Practice Exam - W2021 - Requires Respondus LockDown Browser + Webcam",
+                        "description": "",
+                        "creationDate": "",
+                        "dueDate": "Apr 18, 2021",
+                        "isComplete": false
+                    }
+                ]
+            }
+        ]
+    }
+}
