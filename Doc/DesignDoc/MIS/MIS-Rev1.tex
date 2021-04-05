@@ -56,7 +56,7 @@ focus of this MIS.
 
 \newpage
 
-\section{MIS of GUI Module}
+\section{MIS of GUI Module (M1)}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|c|c|c|c|}
@@ -90,7 +90,7 @@ Constructor():
 
 
 
-\section{MIS of Login Module}
+\section{MIS of Login Module (M2)}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|c|c|c|c|}
@@ -113,13 +113,14 @@ A valid MACID and password will be entered as usernameArg and passwordArg
 \subsubsection{Access Program Semantics}
 login(usernameArg, passwordArg):
 
-    Input: usernameArg, passwordArg
+    Input: usernameArg, passwordArg: Strings \textcolor{red}{//User inputs}
 
     Transition: Submits entered information
 
     Output: None
 
-    Exception: InvalidLoginException if usernameArg or passwordArg is not a valid MACID or password
+    Exception: InvalidLoginException if usernameArg or passwordArg
+    is not a valid MACID or password
 
 
 \newpage
@@ -127,13 +128,13 @@ login(usernameArg, passwordArg):
 
 
 
-\section{MIS of FilterCourses Module}
+\section{MIS of FilterCourses Module (M3)}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|c|c|c|c|}
     \hline
     \textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
-    filterCourses & shadowRoot & panelID & InvalidLoginException \\ \hline
+    filterCourses & shadowRoot & panelId & InvalidLoginException \\ \hline
 \end{tabular}
 \subsubsection{Exported Constants}
 None
@@ -149,18 +150,18 @@ None
 \subsubsection{Access Program Semantics}
 filterCourses(shadowRoot):
     
-    Input: shadowRoot: CSS element
+    Input: shadowRoot: CSS element \textcolor{red}{//Element used to navigate through the HTML}
 
     Transition: Filters courses for current semester
     
-    Output: panelID: String
+    Output: panelID: String \textcolor{red}{//The ID of the filtered courses}
 
     Exception: None
 
 
 \newpage
 
-\section{MIS of AssignmentInformation Module}
+\section{MIS of AssignmentInformation Module (M4)}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|p{5.4cm}|p{4.1cm}|p{3.7cm}|{c}|}
@@ -187,11 +188,11 @@ None
 \subsubsection{Access Program Semantics}
 getAssignmentInformation(classNames, classUrls):
 
-    Input: classNames, classUrls: String arrays
+    Input: classNames, classUrls: String arrays \textcolor{red}{//Names and URLS for each class}
 
     Transition: Collects and returns all assignment information in a dictionary
 
-    Output: assignmentJson: dictionary
+    Output: assignmentJson: dictionary \textcolor{red}{//Dictionary containing all information for assignments}
 
     Exception: None
 \\
@@ -209,33 +210,33 @@ getClasses(shawdowRoot, panelID):
 \\
 getAssignmentDueDates(dueDateElems):
 
-    Input: dueDateElems: CSS elements
+    Input: dueDateElems: CSS elements \textcolor{red}{//Elements collected from the scraping}
 
     Transition: Collects assignment due dates for every class
 
-    Output: dateArr: String array
+    Output: dateArr: String array \textcolor{red}{//Array of dates}
 
     Exception: None
 \\
 \\
 getAssignmentCompleteStatus(completionStatusElems):
 
-    Input: completionStatusElems: CSS elements
+    Input: completionStatusElems: CSS elements \textcolor{red}{//Elements collected from the scraping}
 
     Transition: Collects assignment completion status for every class
 
-    Output: completionStatusArr: String array
+    Output: completionStatusArr: String array \textcolor{red}{//Array of completion statuses}
 
     Exception: None
 \\
 \\
 getAssignmentFolderNames(assignmentFolderElems):
 
-    Input: assignmentFolderElems: CSS elements
+    Input: assignmentFolderElems: CSS elements \textcolor{red}{//Elements collected from the scraping}
 
     Transition: Collects assignment folder names for every class
 
-    Output: assignmentNamesArr: String array
+    Output: assignmentNamesArr: String array \textcolor{red}{//Array of assignment names}
     
     Exception: None
 
@@ -246,7 +247,7 @@ getAssignmentFolderNames(assignmentFolderElems):
 
 
 
-\section{MIS of QuizInformation Module}
+\section{MIS of QuizInformation Module (M5)}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|c|c|c|c|}
@@ -271,57 +272,46 @@ None
 \subsubsection{Assumptions}
 None
 \subsubsection{Access Program Semantics}
-getAssignmentInformation(classNames, classUrls):
-
-    Input: classNames, classUrls: String arrays
-
-    Transition: Collects and returns all assignment information in a dictionary
-
-    Output: assignmentJson: dictionary
-
-    Exception: None
-\\
-\\
 getQuizInformation(classNames, classUrls):
 
     Input: classNames, classUrls: String arrays
 
     Transition: Collects and returns all quiz information in a dictionary
 
-    Output: quizJson: dictionary
+    Output: quizJson: dictionary \textcolor{red}{//Dictionary containing all quiz information}
 
     Exception: None
 \\
 \\
 getQuizFolderNames(quizFolderElems):
     
-    Input: quizFolderElems: CSS elements
+    Input: quizFolderElems: CSS elements \textcolor{red}{//Elements collected from the scraping}
     
     Transition: Collects quiz folder names for every class
     
-    Output: quizNamesArr: String array
+    Output: quizNamesArr: String array \textcolor{red}{//Array of quiz names}
     
     Exception: None
 \\
 \\
 getQuizDueDates(dueDateClass):
     
-    Input: dueDateClass: CSS elements
+    Input: dueDateClass: CSS elements \textcolor{red}{//Elements collected from the scraping}
     
     Transition: Collects quiz due dates for every class
     
-    Output: dateArr: String array
+    Output: dateArr: String array \textcolor{red}{//Array of dates}
     
     Exception: None
 \\
 \\
 getQuizCompleteStatus(completionStatusElems):
     
-    Input: completionStatusElems: CSS elements
+    Input: completionStatusElems: CSS elements \textcolor{red}{//Elements collected from the scraping}
     
     Transition: Collects quiz completion status for every class
     
-    Output: completionStatusArr: String array
+    Output: completionStatusArr: String array \textcolor{red}{//Array of completion statuses}
     
     Exception: None
 \\
@@ -345,7 +335,7 @@ getClasses(shadowRoot, panelID):
 
 
 
-\section{MIS of Filtering Module}
+\section{MIS of Filtering Module (M6)}
 \subsection{Interface Syntax}
 \subsubsection{Exported Access Program}
 \begin{tabular}[pos]{|c|c|c|c|}
@@ -370,11 +360,11 @@ None
 \subsubsection{Access Program Semantics}
 filterAssignmentInformation(assignmentData):
     
-    Input: assignmentData: dictionary
+    Input: assignmentData: dictionary 
     
     Transition: Filters all assignment information and returns a dictionary
     
-    Output: assignmentDataFiltered: dictionary
+    Output: assignmentDataFiltered: dictionary \textcolor{red}{//Dictionary containing all the assignment data filtered}
     
     Exception: None
 \\
@@ -385,7 +375,7 @@ filterQuizInformation(quizData):
 
     Transition: Filters all quiz information and returns a dictionary
 
-    Output: quizDataFiltered: dictionary
+    Output: quizDataFiltered: dictionary \textcolor{red}{//Dictionary containing all the quiz data filtered}
 
     Exception: None
 \\
