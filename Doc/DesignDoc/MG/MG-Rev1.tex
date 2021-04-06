@@ -15,6 +15,8 @@
     urlcolor=blue
 }
 \usepackage[round]{natbib}
+\usepackage[normalem]{ulem}
+
 
 \title{SE 3XA3: Module Guide\\Euneva}
 
@@ -130,7 +132,7 @@ The design of the system is intended to satisfy the requirements developed in th
 
 \subsubsection{GUI Module (M1)}
 \begin{description}
-    \item[\textbf{Secrets:}] Required behaviour of the application elements.
+    \item[\textbf{Secrets:}] \sout{Required behaviour of the application elements.}\textcolor{red}{React components which execute the expected behaviour of the application.}
     \item[\textbf{Services:}] Includes programs that provide eternally visible behaviour of the system as specified in the software requirements specification (SRS) documents. This module serves as a communication layer between the hardware-hiding  module and the software decision module. The programs in this module will need to change if there are changes in the SRS.
     \item[\textbf{Implemented By:}] \textcolor{red}{Euneva Development Team}
 \end{description}
@@ -138,28 +140,28 @@ The design of the system is intended to satisfy the requirements developed in th
 \subsection{Behaviour-Hiding Module}
 \subsubsection{Login Module (M2)}
 \begin{description}
-    \item[\textbf{Secrets:}] Gathering and using the users input information to log into Avenue to Learn
+    \item[\textbf{Secrets:}] \sout{Gathering and using the users input information to log into Avenue to Learn}\textcolor{red}{React input field which collects user input as a string.}
     \item[\textbf{Services:}] Uses CSS elements to navigate through the website, placing the correct information given by the user into the correct sections of the website.
     \item[\textbf{Implemented By:}] \textcolor{red}{Euneva Development Team}
 \end{description}
 
 \subsubsection{Filter Courses Module (M3)}
 \begin{description}
-    \item[\textbf{Secrets:}] Filtering the course information for the current semester.
+    \item[\textbf{Secrets:}] \sout{Filtering the course information for the current semester.}\textcolor{red}{Filtered course information of a user for the current semester as a JSON object.}
     \item[\textbf{Services:}] Uses CSS elements to navigate through the website, pressing the correct filter tab.
     \item[\textbf{Implemented By:}] \textcolor{red}{Euneva Development Team}
 \end{description}
 
 \subsubsection{Assignment Information Module (M4)}
 \begin{description}
-    \item[\textbf{Secrets:}] Collects assignment information for every course.
+    \item[\textbf{Secrets:}] \sout{Collects assignment information for every course.}\textcolor{red}{Assignment information for each course as a JSON object.}
     \item[\textbf{Services:}] Uses CSS elements to navigate through the website, collecting assignment names, due dates, and completion statuses for every course.
     \item[\textbf{Implemented By:}] \textcolor{red}{Euneva Development Team}
 \end{description}
 
 \subsubsection{Quiz Information Module (M5)}
 \begin{description}
-    \item[\textbf{Secrets:}] Collects quiz information for every course.
+    \item[\textbf{Secrets:}] \sout{Collects quiz information for every course.}\textcolor{red}{Quiz information for each course as a JSON object.}
     \item[\textbf{Services:}] Uses CSS elements to navigate through the website, collecting quiz names, due dates, and completion statuses for every course.
     \item[\textbf{Implemented By:}] \textcolor{red}{Euneva Development Team}
 \end{description}
@@ -167,7 +169,7 @@ The design of the system is intended to satisfy the requirements developed in th
 \subsection{Software Decision Module}
 \subsubsection{Filtering Module (M6)}
 \begin{description}
-    \item[\textbf{Secrets:}] Filters and combines the collected information, pushing it to the DB.
+    \item[\textbf{Secrets:}] \sout{Filters and combines the collected information, pushing it to the DB.}\textcolor{red}{Database entries which are combined and filtered and added to the database as JSON objects.}
     \item[\textbf{Services:}] Uses the collected information and filters it for upcoming and incomplete quizzes and assignments, pushing this information to the front end.
     \item[\textbf{Implemented By:}] \textcolor{red}{Euneva Development Team}
 \end{description}
@@ -262,7 +264,7 @@ This section shows two traceability matrices. Between the modules and the requir
 \end{table}
 
 \section{User Hierarchy Between Modules}
-As shown by \ref{hierarchyFig}, the graph representing the relationship
+As shown by \ref{hierarchyFigFrontend} and \ref{hierarchyFigBackend}, the graph representing the relationship
 between the modules is a directed acyclic graph (DAG). 
 The modules have purposely been designed to mimic a tree due to the way
 how technologies like React work when rendering information. Simplicity was 
@@ -271,9 +273,16 @@ the module hierarchy is more tree-like rather than graph-like.
  
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{hierarchy.jpg}
-    \caption{Module Use Hierarchy}
-    \label{hierarchyFig}
+    \includegraphics[width=0.2\textwidth]{frontend_hierarchy.jpg}
+    \caption{Frontend Module Use Hierarchy}
+    \label{hierarchyFigFrontend}
+\end{figure}
+    
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{backend_hierarchy.jpg}
+    \caption{Backend Module Use Hierarchy}
+    \label{hierarchyFigBackend}
 \end{figure}
     
 
