@@ -1,4 +1,4 @@
-# 3XA3-Project-L02-Group9
+# Euneva
 
 ## Getting Started
 
